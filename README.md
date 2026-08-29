@@ -1,4 +1,4 @@
-# Portfolio — 여인수 (YEO INSU)
+# Portfolio — 여인수
 
 Frontend Engineer · AI Product Builder 개인 포트폴리오 사이트.
 
