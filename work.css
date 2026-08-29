@@ -1,0 +1,475 @@
+/* ==========================================================================
+   Work detail pages — shared layout for work-01 … work-04.
+   Shared chrome (shell, sticky header, screenshots, lightbox) lives in
+   page.css; design tokens and components in ds/styles.css.
+   ========================================================================== */
+
+/* Detail pages read narrower than the home page. */
+:root { --shell: 1100px; }
+
+/* ── Header ────────────────────────────────────────────────────────────── */
+
+.work-nav {
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.work-nav__link {
+  text-decoration: none;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.work-nav__link:hover { color: var(--color-accent); }
+
+.work-nav__counter {
+  font-size: 12px;
+  color: var(--color-neutral-600);
+  letter-spacing: 0.06em;
+}
+
+.work-nav__next { margin-left: auto; }
+
+/* Touch target on the nav links. */
+.work-nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* ── Page head ─────────────────────────────────────────────────────────── */
+
+.work-page { padding: clamp(48px, 7vw, 80px) 24px 64px; }
+
+.work-page__kicker {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 12px;
+}
+
+.work-page__title {
+  font-size: clamp(32px, 5vw, 60px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 16px;
+}
+
+.work-page__lead {
+  font-size: 16.5px;
+  line-height: 1.75;
+  max-width: 64ch;
+  margin: 0 0 28px;
+}
+
+/* Period / role / stack strip between two rules. */
+.factbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  border-top: 2px solid var(--color-divider);
+  border-bottom: 2px solid var(--color-divider);
+  padding: 14px 0;
+  font-size: 13.5px;
+}
+
+/* ── Numbered sections ─────────────────────────────────────────────────── */
+
+.wsec { padding: 28px 0 8px; }
+.wsec--first { padding-top: 44px; }
+.wsec--gap { padding-top: 36px; }
+.wsec--end { padding: 36px 0 0; }
+
+.wsec__title {
+  font-size: clamp(22px, 2.6vw, 30px);
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+
+.wsec__title--grid { margin-bottom: 18px; }
+.wsec__title--shots { margin-bottom: 6px; }
+
+.wsec__num { color: var(--color-accent); }
+
+/* The "(2026.08.26 대시보드 실측)" qualifier riding along with a heading. */
+.wsec__qualifier {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-neutral-600);
+  letter-spacing: 0;
+}
+
+.wsub {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+
+.wsub--spaced { margin: 12px 0 10px; }
+
+/* ── Prose ─────────────────────────────────────────────────────────────── */
+
+.prose {
+  font-size: 15.5px;
+  line-height: 1.8;
+  max-width: 68ch;
+  margin: 0 0 10px;
+}
+
+.prose-sm {
+  font-size: 14.5px;
+  line-height: 1.75;
+  max-width: 68ch;
+  margin: 0 0 12px;
+}
+
+.prose--lead { margin-bottom: 18px; }
+
+.prose-sm--tight { margin-bottom: 8px; }
+.prose-sm--mid { margin-bottom: 16px; }
+.prose-sm--loose { margin-bottom: 20px; }
+
+.prose:last-child,
+.prose-sm:last-child { margin-bottom: 0; }
+
+.note {
+  font-size: 13.5px;
+  color: var(--color-neutral-600);
+  margin: 0 0 20px;
+}
+
+/* A single-line pipeline / command flow, set in the heading face. */
+.flow {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--color-surface);
+  border: 1px solid var(--color-neutral-300);
+  padding: 12px 16px;
+  max-width: 68ch;
+  margin: 0 0 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.flow--lg {
+  font-size: 13.5px;
+  margin-bottom: 12px;
+}
+
+/* ── Judgment cards ────────────────────────────────────────────────────── */
+
+.judgment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0 40px;
+}
+
+.judgment {
+  border-top: 2px solid var(--color-divider);
+  padding: 16px 0 20px;
+}
+
+.judgment h3 {
+  font-size: 16.5px;
+  margin: 0 0 8px;
+}
+
+.judgment p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-neutral-800);
+  margin: 0;
+}
+
+/* ── Results ───────────────────────────────────────────────────────────── */
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0 36px;
+}
+
+.result-grid--quoted { margin-bottom: 24px; }
+
+.result {
+  border-top: 2px solid var(--color-divider);
+  padding: 14px 0 18px;
+}
+
+.result__value {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 1.1;
+}
+
+.result__note {
+  font-size: 13px;
+  color: var(--color-neutral-600);
+  margin-top: 6px;
+}
+
+.pullquote {
+  border-left: none;
+  border-top: 2px solid var(--color-divider);
+  margin: 0;
+  padding: 16px 0 0;
+  max-width: 68ch;
+}
+
+.pullquote p {
+  font-size: 15.5px;
+  line-height: 1.7;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.pullquote cite {
+  font-size: 13px;
+  color: var(--color-neutral-600);
+  font-style: normal;
+}
+
+/* ── Tables ────────────────────────────────────────────────────────────── */
+
+.wtable {
+  width: 100%;
+  font-size: 13.5px;
+  margin: 0 0 20px;
+}
+
+.wtable--tight { margin-bottom: 16px; }
+.wtable--loose { margin-bottom: 28px; }
+.wtable--flush { margin-bottom: 0; }
+
+.wtable th { text-align: left; }
+.wtable td:first-child { white-space: nowrap; }
+
+/* ── Screenshot grids ──────────────────────────────────────────────────── */
+
+.shot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 32px;
+}
+
+.shot-grid--sm { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.shot-grid--stacked { margin-bottom: 32px; }
+
+.shot-grid figure,
+.shot-figure { margin: 0; }
+
+.shot-figure--wide { max-width: 860px; }
+
+/* Detail-page captions run slightly larger than the home page's, and use a
+   darker ink so 12–13px text clears AA contrast on the paper background. */
+.work-page .shot-caption {
+  font-size: 12.5px;
+  color: var(--color-neutral-700);
+}
+
+.shot-caption--wide { max-width: 76ch; }
+
+/* ── Pager ─────────────────────────────────────────────────────────────── */
+
+.work-pager .btn { min-height: 44px; }
+
+.work-pager {
+  border-top: 2px solid var(--color-divider);
+  margin-top: 48px;
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+/* ── Hero ──────────────────────────────────────────────────────────────────
+   The first screen used to stack everything in one narrow column, leaving the
+   right half of the desktop viewport empty. Text on the left, the project's
+   representative screen on the right, headline metrics directly under the
+   title so the result is visible without scrolling.
+   ────────────────────────────────────────────────────────────────────────── */
+
+.work-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 28px;
+}
+
+.work-hero__text { min-width: 0; }
+.work-hero__media { min-width: 0; }
+
+.work-hero .work-page__lead { margin-bottom: 0; }
+
+/* Headline metrics — the two or three numbers that carry the project. */
+.hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0 24px;
+  margin: 0 0 24px;
+}
+
+.hero-metric {
+  border-top: 2px solid var(--color-divider);
+  padding: 12px 0 14px;
+}
+
+.hero-metric__value {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(19px, 1.7vw, 23px);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.hero-metric__note {
+  font-size: 12.5px;
+  color: var(--color-neutral-700);
+  margin-top: 6px;
+}
+
+/* Provenance notice above a screenshot gallery whose images post-date the
+   project being described. */
+.provenance {
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-surface);
+  padding: 12px 16px;
+  margin: 0 0 20px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  max-width: 80ch;
+}
+
+/* Textual results (a phrase rather than a figure) need a smaller face. */
+.result__value--text { font-size: 22px; line-height: 1.25; }
+
+/* ── Step list ─────────────────────────────────────────────────────────────
+   A sequence of stages reads as a numbered list rather than one long
+   sentence with arrows in it.
+   ────────────────────────────────────────────────────────────────────────── */
+
+.steps {
+  list-style: none;
+  counter-reset: step;
+  margin: 0;
+  padding: 0;
+  max-width: 72ch;
+}
+
+.steps li {
+  counter-increment: step;
+  border-top: 1px solid var(--color-neutral-300);
+  padding: 12px 0 12px 44px;
+  position: relative;
+}
+
+.steps li:last-child { border-bottom: 1px solid var(--color-neutral-300); }
+
+.steps li::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 12px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--color-accent);
+  letter-spacing: 0.04em;
+}
+
+.steps__title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.steps__note {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--color-neutral-800);
+  margin-top: 4px;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .work-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Only "back to all projects" and the current position survive on a phone;
+     the forward link stays available in the pager at the foot of the page. */
+  .work-nav__next { display: none; }
+  .work-nav__counter-label { display: none; }
+  .work-nav__counter { margin-left: auto; }
+
+  .work-page { padding-left: 20px; padding-right: 20px; }
+
+  .work-page .shot-caption { font-size: 13px; }
+
+  .factbar { gap: 6px 0; flex-direction: column; }
+
+  /* Two-column tables become one card per row: the header cell becomes a
+     label above its value instead of a column the reader has to track. */
+  .wtable thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .wtable,
+  .wtable tbody,
+  .wtable tr,
+  .wtable td {
+    display: block;
+    width: 100%;
+  }
+
+  .wtable tr {
+    border-bottom: 2px solid var(--color-divider);
+    padding: 14px 0;
+  }
+
+  .wtable tr:first-child { border-top: 2px solid var(--color-divider); }
+
+  .wtable td {
+    border: 0;
+    padding: 0 0 8px;
+  }
+
+  .wtable td:last-child { padding-bottom: 0; }
+
+  .wtable td::before {
+    content: attr(data-label);
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-neutral-700);
+    margin-bottom: 4px;
+  }
+
+  .wtable td:first-child { white-space: normal; }
+
+  .work-pager { gap: 10px; }
+  .work-pager .btn { width: 100%; }
+}

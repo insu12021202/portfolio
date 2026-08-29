@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>광고 캠페인 리포트 자동화 | 여인수</title>
+  <meta name="description" content="마케터가 매일 평균 4시간을 들이던 광고주 리포트 작성을, 최초 설정 후 10분 안에 내려받는 흐름으로 전환했습니다.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ec3013'/%3E%3Ctext x='7' y='24' font-family='Arial' font-weight='800' font-size='20' fill='white'%3EY%3C/text%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="ds/styles.css">
+  <link rel="stylesheet" href="page.css">
+  <link rel="stylesheet" href="work.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="work-nav shell" aria-label="프로젝트 이동">
+    <a class="work-nav__link" href="index.html#work">← 전체 프로젝트</a>
+    <span class="work-nav__counter"><span class="work-nav__counter-label">SELECTED WORK </span>04 / 04</span>
+    <a class="work-nav__link work-nav__next" href="work-01-inova.html">첫 프로젝트: i-Nova →</a>
+  </nav>
+</header>
+
+<main class="work-page shell">
+  <div class="work-hero">
+    <div class="work-hero__text">
+      <p class="work-page__kicker">04 · 현업 업무 자동화</p>
+      <h1 class="work-page__title">광고 캠페인<br>리포트 자동화</h1>
+      <div class="hero-metrics">
+        <div class="hero-metric">
+          <div class="hero-metric__value">4시간 → 10분</div>
+          <div class="hero-metric__note">마케터 1인당 매일 평균 리포트 작성 시간</div>
+        </div>
+        <div class="hero-metric">
+          <div class="hero-metric__value">i-flow로 확장</div>
+          <div class="hero-metric__note">검증된 PoC가 캠페인 리포트 기능의 기반이 됨</div>
+        </div>
+        <div class="hero-metric">
+          <div class="hero-metric__value">42 / 43건 머지</div>
+          <div class="hero-metric__note">머지된 변경 사항 모두 상용 반영</div>
+        </div>
+      </div>
+      <p class="work-page__lead">마케터가 매일 평균 4시간을 들이던 광고주 리포트 작성을 자동화했습니다. 현업 인터뷰와 자동화 범위 설계부터 프론트엔드 구현까지 맡아, 최초 설정 후 10분 안에 리포트를 내려받을 수 있는 흐름으로 전환했습니다. 검증된 PoC는 이후 통합 광고 솔루션 i-flow의 캠페인 리포트 기능으로 확장됐습니다.</p>
+    </div>
+    <div class="work-hero__media">
+      <figure>
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="캠페인 매칭과 리포트 설정의 진입점입니다. PoC 이후 i-flow로 확장된 화면이며, 화면 내 수치는 테스트 데이터입니다." aria-label="이미지 크게 보기">
+          <img class="shot" src="assets/캠페인리포트 메인화면.png" alt="캠페인 리포트 메인 화면: 캠페인 목록과 리포트 설정" loading="lazy">
+        </button>
+        <figcaption class="shot-caption">캠페인 매칭과 리포트 설정의 진입점입니다. PoC 이후 i-flow로 확장된 후속 화면입니다.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="factbar">
+    <span><strong>기간</strong> 2024.05 – 2025.05</span>
+    <span><strong>역할</strong> 요구사항 정의 · 자동화 설계 · 프론트엔드 전담</span>
+    <span><strong>협업</strong> 현업 인터뷰와 초기 설계를 주도하고 인프라·백엔드팀과 협업</span>
+    <span><strong>MR</strong> 43건 중 42건 머지 · 머지된 변경 사항 모두 상용 반영</span>
+  </div>
+
+  <section class="wsec wsec--first">
+    <h2 class="wsec__title"><span class="wsec__num">1</span> 문제</h2>
+    <p class="prose">인크로스가 미디어렙을 대행한 광고에 대해, 마케터가 매일 오전 직접 리포트를 만들어 광고주에게 보내고 있었습니다. 매체별 수치 확인 → 템플릿 복사 → 계산 → 시각화를 전부 사람이 처리해 휴먼 에러가 잦았고, 대형 캠페인의 리포트 작성은 밤늦게까지 이어지기도 했습니다. 이상 수치가 나타나면 마케터가 매체 대시보드를 하루 종일 열어두고 감시해야 했습니다.</p>
+    <p class="prose">이 문제를 "불편"이 아니라 리스크로 정의했습니다. 오전 업무 시간이 소모되면서 전략 업무에 쓸 시간이 부족해졌고, 리포트 오류는 광고주 신뢰도 저하로 이어질 수 있었으며, 이상 수치 대응 지연은 광고비 손실 위험을 높였습니다. 담당자의 경험과 스킬에 의존하는 구조여서 품질 편차가 생길 수 있다는 점도 함께 정리했습니다.</p>
+  </section>
+
+  <section class="wsec">
+    <h2 class="wsec__title"><span class="wsec__num">2</span> 맡은 역할</h2>
+    <p class="prose">이 프로젝트는 현업 인터뷰에서 시작했습니다. 광고 마케팅 부서의 업무 흐름과 예외 케이스를 파악하고, 자동화할 영역과 사용자가 직접 설정할 영역을 구분했습니다. 이를 토대로 인프라·백엔드팀과 협업하고 프론트엔드 설계와 구현을 전담했습니다.</p>
+  </section>
+
+  <section class="wsec">
+    <h2 class="wsec__title wsec__title--grid"><span class="wsec__num">3</span> 핵심 판단과 구현</h2>
+    <p class="prose prose--lead">매체·대행사·캠페인마다 계산 규칙이 달랐습니다. 규칙을 코드에 고정하면 변경할 때마다 수정과 배포가 필요합니다. 계산식·마크업·보정값·분리 조건을 화면에서 설정할 수 있는 데이터로 모델링하고, 프론트엔드에서 입력·검증·미리보기·다운로드 흐름을 구현했습니다.</p>
+    <table class="table wtable wtable--tight">
+      <thead><tr><th>설계 결정</th><th>판단 이유와 구현</th></tr></thead>
+      <tbody>
+        <tr>
+          <td data-label="설계 결정">매체별 소진금액 계산식 설정</td>
+          <td data-label="판단 이유와 구현">매체가 전달하는 소진금액을 그대로 쓸 수 없었습니다(예: Google은 소진금액을 0.7로 나눔). 마크업과 수수료가 매체·대행사마다 달라, 계산식을 화면에서 설정 가능한 값으로 분리했습니다.</td>
+        </tr>
+        <tr>
+          <td data-label="설계 결정">DMP 마크업 설정</td>
+          <td data-label="판단 이유와 구현">DMP는 광고 타깃팅에 쓰는 데이터 플랫폼이고, 마크업은 원가에 얹는 가산율입니다. 매체 단위로만 지정하던 마크업을 캠페인·광고그룹 단위까지 확장하고, 매체 마크업과 곱연산하도록 구현했습니다.</td>
+        </tr>
+        <tr>
+          <td data-label="설계 결정">보정값·세그먼트·캠페인 분리</td>
+          <td data-label="판단 이유와 구현">보정값은 매체가 전달한 수치를 리포트 기준에 맞추기 위해 더하거나 곱하는 조정치입니다. 리포트마다 다른 산출 방식과, 하나의 캠페인을 여러 리포트로 나누는 경우를 옵션으로 다뤘습니다.</td>
+        </tr>
+        <tr>
+          <td data-label="설계 결정">보안 요건</td>
+          <td data-label="판단 이유와 구현">실소진금액(마크업을 얹기 전에 매체로 실제 지급한 금액)이 외부 리포트에 직접 포함되지 않도록, 계산식을 거친 조정값만 전달하는 보안 요건을 반영했습니다.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="wsec">
+    <h2 class="wsec__title"><span class="wsec__num">4</span> 해결 과정</h2>
+    <ol class="steps">
+      <li>
+        <div class="steps__title">현업 인터뷰와 업무 흐름 분석</div>
+        <div class="steps__note">광고 마케팅 부서를 직접 만나 매일의 리포트 작성 절차와 예외 케이스를 확인했습니다.</div>
+      </li>
+      <li>
+        <div class="steps__title">자동화 범위와 설정 영역 설계</div>
+        <div class="steps__note">시스템이 자동으로 처리할 영역과 사용자가 직접 설정해야 할 영역의 경계를 정의했습니다.</div>
+      </li>
+      <li>
+        <div class="steps__title">PoC 구축 및 검증</div>
+        <div class="steps__note">설계를 기준으로 인프라·백엔드팀이 합류했고, 빠르게 구축해 실제 업무에서 검증했습니다.</div>
+      </li>
+      <li>
+        <div class="steps__title">요약(Summary) 시트 5종·전체 미리보기·차트 옵션 확장</div>
+        <div class="steps__note">베타 2차 개발에서 요약 시트 5종과 전체 미리보기, 차트 옵션을 추가했습니다.</div>
+      </li>
+      <li>
+        <div class="steps__title">2025년 4월 베타 메뉴 사내 오픈</div>
+        <div class="steps__note">템플릿 업로드 검증과 팀·미디어 리스트의 서버 관리 전환을 마치고 메뉴를 열었습니다.</div>
+      </li>
+      <li>
+        <div class="steps__title">SSO 인증·인가와 광고 모니터링 기능 확장</div>
+        <div class="steps__note">SSO 기반 인증·인가를 구현했고, 캠페인별 담당팀 다중 지정과 모바일 앱 푸시 알림을 갖춘 광고 모니터링을 같은 서비스 안에서 확장했습니다.</div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="wsec wsec--gap">
+    <h2 class="wsec__title wsec__title--grid"><span class="wsec__num">5</span> 정량적 결과</h2>
+    <div class="result-grid">
+      <div class="result">
+        <div class="result__value">4시간 → 10분</div>
+        <div class="result__note">마케터 1인당 매일 평균 리포트 작성 시간에서, 최초 설정 후 10분 안에 다운로드하는 흐름으로 전환 (사내 기획 문서에 명시된 수치)</div>
+      </div>
+      <div class="result">
+        <div class="result__value result__value--text">i-flow 캠페인 리포트 기능의 기반</div>
+        <div class="result__note">PoC 검증 후 통합 광고 솔루션의 캠페인 리포트 기능으로 확장</div>
+      </div>
+      <div class="result">
+        <div class="result__value">약 150명</div>
+        <div class="result__note">회사 전체 마케터 규모이며 실제 일별 리포트 작성 인원과는 다름</div>
+      </div>
+      <div class="result">
+        <div class="result__value">42 / 43건 머지</div>
+        <div class="result__note">머지된 변경 사항 모두 상용 반영</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wsec wsec--gap">
+    <h2 class="wsec__title wsec__title--shots"><span class="wsec__num">6</span> 실제 화면</h2>
+    <p class="provenance">아래 이미지는 PoC 검증 후 i-flow의 캠페인 리포트 기능으로 확장된 후속 화면입니다. 당시 PoC 화면과는 다르며, 화면 내 수치는 테스트 데이터입니다. i-flow는 프론트엔드 2명이 함께 개발한 서비스이고, 이 화면에 해당하는 캠페인 리포트 기능과 초기 구조·인증/인가 설계를 본인이 담당했습니다.</p>
+    <p class="note">이미지를 클릭하면 크게 볼 수 있습니다.</p>
+    <div class="shot-grid">
+      <figure>
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="캠페인의 주요 성과 지표를 한 화면에서 확인하는 대시보드입니다." aria-label="이미지 크게 보기">
+          <img class="shot" src="assets/캠페인리포트_대시보드.png" alt="캠페인 리포트 대시보드 화면" loading="lazy">
+        </button>
+        <figcaption class="shot-caption">캠페인의 주요 성과 지표를 한 화면에서 확인하는 대시보드입니다.</figcaption>
+      </figure>
+      <figure>
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="매체·대행사·캠페인별 계산 규칙을 설정 가능한 값으로 관리하는 화면입니다." aria-label="이미지 크게 보기">
+          <img class="shot" src="assets/캠페인리포트_리포트등록화면.png" alt="캠페인 리포트 등록 화면: 계산식과 마크업 설정" loading="lazy">
+        </button>
+        <figcaption class="shot-caption">매체·대행사·캠페인별 계산 규칙을 설정 가능한 값으로 관리하는 화면입니다.</figcaption>
+      </figure>
+      <figure>
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="설정한 규칙을 기반으로 자동 생성된 최종 엑셀 리포트입니다." aria-label="이미지 크게 보기">
+          <img class="shot" src="assets/캠페인리포트_엑셀리포트예시.png" alt="자동 생성된 엑셀 리포트 예시" loading="lazy">
+        </button>
+        <figcaption class="shot-caption">설정한 규칙을 기반으로 자동 생성된 최종 엑셀 리포트입니다.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wsec wsec--end">
+    <h2 class="wsec__title"><span class="wsec__num">7</span> 배운 점과 확장</h2>
+    <p class="prose">요청된 기능을 구현하는 데서 그치지 않고, 현업의 문제를 발견해 자동화의 경계를 설계한 첫 프로젝트였습니다. 이후 미디어바잉팀이 사용하는 정산 시스템과 <a href="work-02-ai-workflow.html">팀 AI 워크플로 표준화</a>에도 '문제 발견 → 구조화 → 제품화'의 방식을 적용했습니다.</p>
+  </section>
+
+  <div class="work-pager">
+    <a class="btn btn-ghost" href="work-03-ux-ai-hub.html">← 이전: UX AI Hub</a>
+    <a class="btn btn-secondary" href="index.html#work">전체 프로젝트로 →</a>
+  </div>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="이미지 크게 보기" hidden>
+  <img class="lightbox__img" id="lightbox-img" src="" alt="">
+  <p class="lightbox__caption" id="lightbox-caption"></p>
+  <button class="lightbox__close" id="lightbox-close" type="button">닫기 ESC</button>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

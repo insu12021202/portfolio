@@ -1,0 +1,513 @@
+/* ==========================================================================
+   Portfolio home — page styles.
+   Shared chrome (shell, sticky header, screenshots, lightbox) lives in
+   page.css; design tokens and components in ds/styles.css.
+   ========================================================================== */
+
+/* Section headings repeat across Work / Experience / Capabilities. */
+.section-title {
+  font-size: clamp(28px, 3.6vw, 44px);
+  letter-spacing: -0.02em;
+  margin: 0 0 6px;
+}
+
+.section-intro {
+  font-size: 15px;
+  color: var(--color-neutral-700);
+  margin: 0 0 40px;
+  max-width: 60ch;
+}
+
+/* Small uppercase label used for "Impact Overview" and "Other Work". */
+.eyebrow-heading {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 4px;
+}
+
+/* ── Header ────────────────────────────────────────────────────────────── */
+
+.site-nav {
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.site-nav__brand {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.site-nav__tagline {
+  font-size: 12px;
+  color: var(--color-neutral-600);
+  letter-spacing: 0.04em;
+}
+
+.site-nav__links {
+  margin-left: auto;
+  display: flex;
+  gap: 22px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.site-nav__links a {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.site-nav__links a:hover,
+.site-nav__links a[aria-current="true"] {
+  color: var(--color-accent);
+}
+
+.site-nav__toggle {
+  display: none;
+  margin-left: auto;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 2px solid var(--color-text);
+  padding: 6px 12px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--color-text);
+  min-height: 44px;
+}
+
+.site-menu {
+  border-top: 2px solid var(--color-divider);
+  background: var(--color-bg);
+  padding: 8px 24px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-menu[hidden] { display: none; }
+
+.site-menu a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 600;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-neutral-300);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.site-menu a:last-child { border-bottom: 0; }
+
+@media (max-width: 760px) {
+  .site-nav__links { display: none; }
+  .site-nav__toggle { display: inline-flex; }
+}
+
+/* ── Hero ──────────────────────────────────────────────────────────────── */
+
+.hero {
+  padding: clamp(56px, 9vw, 110px) 24px 48px;
+}
+
+.hero__eyebrow {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 20px;
+}
+
+.hero__title {
+  font-size: clamp(36px, 6.2vw, 78px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;
+  max-width: 18ch;
+  text-wrap: pretty;
+}
+
+.hero__lead {
+  font-size: clamp(16px, 1.6vw, 19px);
+  line-height: 1.7;
+  max-width: 62ch;
+  margin: 0 0 12px;
+}
+
+.hero__meta {
+  font-size: 14px;
+  color: var(--color-neutral-700);
+  margin: 0 0 32px;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 56px;
+}
+
+.hero__actions .btn { min-height: 44px; }
+
+.hero__note {
+  font-size: 13px;
+  color: var(--color-neutral-600);
+  margin: 0 0 20px;
+}
+
+/* ── Impact stats ──────────────────────────────────────────────────────── */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0 40px;
+}
+
+.stat {
+  border-top: 2px solid var(--color-divider);
+  padding: 16px 0 20px;
+}
+
+.stat__head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+/* Deliberately smaller than the section headlines: the overview is a
+   reference strip, not the loudest thing on the page. */
+
+/* Deliberately smaller than the section headlines: the overview is a
+   reference strip, not the loudest thing on the page. */
+.stat__value {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(22px, 2.4vw, 28px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.stat__label {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 8px 0 2px;
+}
+
+.stat__source {
+  font-size: 13px;
+  color: var(--color-neutral-600);
+  margin: 0;
+}
+
+/* ── Work ──────────────────────────────────────────────────────────────── */
+
+.work { padding: 40px 24px 24px; }
+
+.work-item {
+  border-top: 2px solid var(--color-divider);
+  padding: 44px 0 56px;
+}
+
+.work-item__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.work-item__text {
+  flex: 1 1 400px;
+  min-width: 300px;
+}
+
+.work-item__media {
+  flex: 1.3 1 460px;
+  min-width: 300px;
+}
+
+.work-item__kicker {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 10px;
+}
+
+.work-item__title {
+  font-size: clamp(26px, 3vw, 38px);
+  letter-spacing: -0.02em;
+  margin: 0 0 6px;
+}
+
+.work-item__meta {
+  font-size: 13px;
+  color: var(--color-neutral-600);
+  margin: 0 0 18px;
+}
+
+.work-item__body {
+  font-size: 15.5px;
+  line-height: 1.75;
+  max-width: 58ch;
+  margin: 0 0 20px;
+}
+
+.work-item .btn { min-height: 44px; }
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px 20px;
+  margin: 0 0 24px;
+}
+
+.metric__value {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.metric__note {
+  font-size: 12px;
+  color: var(--color-neutral-600);
+}
+
+/* ── Other work list ───────────────────────────────────────────────────── */
+
+.other-work {
+  border-top: 2px solid var(--color-divider);
+  padding: 40px 0 48px;
+}
+
+.other-work .eyebrow-heading { margin-bottom: 20px; }
+
+.other-work__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.other-work__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-neutral-300);
+}
+
+.other-work__row:last-child { border-bottom: 0; }
+
+.other-work__name {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 16px;
+  flex: 0 0 220px;
+}
+
+.other-work__desc {
+  font-size: 14px;
+  color: var(--color-neutral-700);
+  flex: 1 1 340px;
+}
+
+.other-work__date {
+  font-size: 12px;
+  color: var(--color-neutral-500);
+}
+
+/* ── Experience ────────────────────────────────────────────────────────── */
+
+.experience { padding: 40px 24px 24px; }
+
+.experience .section-intro {
+  max-width: 62ch;
+  margin-bottom: 36px;
+}
+
+.timeline-row {
+  border-top: 2px solid var(--color-divider);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  padding: 28px 0;
+}
+
+.timeline-row:last-of-type { border-bottom: 2px solid var(--color-divider); }
+
+.timeline-row__year {
+  flex: 0 0 140px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 36px;
+  letter-spacing: -0.02em;
+  color: var(--color-accent);
+}
+
+.timeline-row__body { flex: 1 1 420px; }
+
+.timeline-row__body h3 {
+  font-size: 19px;
+  margin: 0 0 6px;
+}
+
+.timeline-row__body p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--color-neutral-800);
+  margin: 0;
+  max-width: 66ch;
+}
+
+/* ── Capabilities ──────────────────────────────────────────────────────── */
+
+.capabilities { padding: 40px 24px 64px; }
+
+.capabilities .section-intro {
+  max-width: 62ch;
+  margin-bottom: 32px;
+}
+
+.capability-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 0 48px;
+}
+
+.capability {
+  border-top: 2px solid var(--color-divider);
+  padding: 18px 0 22px;
+}
+
+.capability h3 {
+  font-size: 17px;
+  margin: 0 0 6px;
+}
+
+.capability p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--color-neutral-700);
+  margin: 0;
+}
+
+/* ── Contact ───────────────────────────────────────────────────────────── */
+
+.contact {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
+.contact__inner { padding: clamp(56px, 8vw, 96px) 24px; }
+
+.contact__title {
+  font-size: clamp(30px, 4.4vw, 56px);
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+  color: #ffffff;
+}
+
+.contact__lead {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 32px;
+  max-width: 56ch;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contact__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 20px;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.contact__link:hover {
+  background: #ffffff;
+  color: var(--color-accent);
+}
+
+.contact__link:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* ── Footer ────────────────────────────────────────────────────────────── */
+
+.site-footer {
+  padding: 20px 24px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--color-neutral-600);
+}
+
+/* ── Method note ───────────────────────────────────────────────────────────
+   How the figures on this page were verified. Kept at the foot of the page
+   so the overview strip does not have to carry the explanation.
+   ────────────────────────────────────────────────────────────────────────── */
+
+.method {
+  border-top: 2px solid var(--color-divider);
+  padding: 28px 24px 8px;
+}
+
+.method p {
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--color-neutral-700);
+  max-width: 78ch;
+  margin: 0 0 6px;
+}
+
+.method .tag { margin-right: 6px; }
+
+/* ── Responsive ────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .hero,
+  .work,
+  .experience,
+  .capabilities,
+  .contact__inner,
+  .site-footer,
+  .method { padding-left: 20px; padding-right: 20px; }
+
+  .site-nav { padding-left: 20px; padding-right: 20px; }
+
+  .site-nav__tagline { display: none; }
+
+  .hero__actions .btn,
+  .work-item .btn { width: 100%; }
+
+  /* Name and date stop competing for one line with the description. */
+  .other-work__name { flex: 1 1 100%; }
+  .other-work__date { flex: 0 0 auto; }
+
+  .timeline-row__year { flex: 0 0 auto; font-size: 30px; }
+}

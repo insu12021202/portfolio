@@ -1,0 +1,136 @@
+/* ==========================================================================
+   Shared page chrome — used by index.html and every work-NN detail page.
+   Layered on top of ds/styles.css (the Modernist design system).
+   Page-specific layout lives in styles.css (home) and work.css (detail).
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+body {
+  font-family: "Archivo", "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  /* Korean breaks between syllables by default, which splits words in the
+     middle of a line. Break on word boundaries, and only force a break for
+     strings that genuinely cannot fit (repository paths, long identifiers). */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Archivo", "Pretendard Variable", Pretendard, system-ui, sans-serif;
+}
+
+a { color: var(--color-accent); }
+a:hover { color: var(--color-accent-600); }
+
+/* Every section is bounded to the same measure. The home page runs wide;
+   detail pages narrow it by overriding --shell on the root. */
+.shell {
+  max-width: var(--shell, 1200px);
+  margin: 0 auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-bg);
+  border-bottom: 2px solid var(--color-divider);
+}
+
+/* ── Zoomable screenshots ──────────────────────────────────────────────── */
+
+/* The button is a bare hit area wrapped around the image. */
+.zoom-trigger {
+  all: unset;
+  display: block;
+  cursor: zoom-in;
+  width: 100%;
+}
+
+.zoom-trigger:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.shot {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-neutral-300);
+  box-shadow: var(--shadow-sm);
+}
+
+.shot-caption {
+  font-size: 12.5px;
+  margin-top: 8px;
+  color: var(--color-neutral-700);
+}
+
+/* ── Lightbox ──────────────────────────────────────────────────────────── */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(32, 30, 29, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  cursor: zoom-out;
+}
+
+.lightbox[hidden] { display: none; }
+
+.lightbox__img {
+  max-width: min(1400px, 94vw);
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  box-shadow: var(--shadow-lg);
+  background: #fff;
+}
+
+.lightbox__caption {
+  color: #ffffff;
+  font-size: 13px;
+  margin: 14px 0 0;
+  max-width: 80ch;
+  text-align: left;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 13px;
+  padding: 8px 14px;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.lightbox__close:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* The page behind the lightbox must not scroll. */
+body.is-locked { overflow: hidden; }
+
+/* ── Motion ────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+  html { scroll-behavior: auto; }
+}

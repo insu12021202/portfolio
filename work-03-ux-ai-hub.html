@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UX AI Hub: AI 활용 측정 플랫폼 | 여인수</title>
+  <meta name="description" content="팀의 AI 활용과 개발 절차를 측정하는 내부 플랫폼: 지표 설계, NestJS·PostgreSQL, AWS, 대시보드까지 단독 구현.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ec3013'/%3E%3Ctext x='7' y='24' font-family='Arial' font-weight='800' font-size='20' fill='white'%3EY%3C/text%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="ds/styles.css">
+  <link rel="stylesheet" href="page.css">
+  <link rel="stylesheet" href="work.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="work-nav shell" aria-label="프로젝트 이동">
+    <a class="work-nav__link" href="index.html#work">← 전체 프로젝트</a>
+    <span class="work-nav__counter"><span class="work-nav__counter-label">SELECTED WORK </span>03 / 04</span>
+    <a class="work-nav__link work-nav__next" href="work-04-campaign-report.html">다음: 캠페인 리포트 →</a>
+  </nav>
+</header>
+
+<main class="work-page shell">
+  <div class="work-hero">
+    <div class="work-hero__text">
+      <p class="work-page__kicker">03 · AI 활용·개발 절차 측정 플랫폼</p>
+      <h1 class="work-page__title">UX AI Hub<br>AI 활용 측정 플랫폼</h1>
+      <div class="hero-metrics">
+        <div class="hero-metric">
+          <div class="hero-metric__value">위험 커밋 16건 차단</div>
+          <div class="hero-metric__note">가드레일이 실제로 막은 커밋 (2026.08.26 실측)</div>
+        </div>
+        <div class="hero-metric">
+          <div class="hero-metric__value">민감 파일 경고 46건</div>
+          <div class="hero-metric__note">credential·env·secret·token·pem 패턴</div>
+        </div>
+        <div class="hero-metric">
+          <div class="hero-metric__value">261건 → 94% 머지</div>
+          <div class="hero-metric__note">작업 261건 중 머지 도달 246건</div>
+        </div>
+      </div>
+      <p class="work-page__lead">표준화한 워크플로의 사용 현황과 효과를 검증하고, 개선 근거를 확보하기 위해 구축했습니다. 지표 정의부터 NestJS·PostgreSQL 수집 서버, AWS 배포, 대시보드 프론트엔드까지 전 영역을 단독으로 구현했습니다. 본부 단위 보고와 플러그인 개선을 위한 의사결정 근거로 쓰도록 설계했습니다.</p>
+    </div>
+    <div class="work-hero__media">
+      <figure>
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="절차 이행 퍼널입니다. 작업이 시작부터 머지까지 어느 단계에서 이탈하는지 추적합니다." aria-label="이미지 크게 보기">
+          <img class="shot" src="assets/ux ai hub_절차 이행 퍼널.png" alt="UX AI Hub 절차 이행 퍼널 대시보드" loading="lazy">
+        </button>
+        <figcaption class="shot-caption">절차 이행 퍼널입니다. 리뷰 없이 머지된 42건을 별도 지표로 함께 보여 줍니다.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="factbar">
+    <span><strong>기간</strong> 2026.07 – 현재 (MVP 완료, 고도화 중)</span>
+    <span><strong>역할</strong> TF 리드 · 서버·지표·인프라·프론트엔드 전 영역 단독 구현</span>
+    <span><strong>스택</strong> NestJS · PostgreSQL · AWS(TLS·systemd) · Vue 3</span>
+  </div>
+
+  <section class="wsec wsec--first">
+    <h2 class="wsec__title"><span class="wsec__num">1</span> 문제</h2>
+    <p class="prose">만든 도구를 계속 개선하려면 쓰이는 방식을 알아야 했습니다. 어떤 스킬이 실제로 쓰이는지, 문서 연결률과 리뷰 리드타임은 어떤지를 확인해야 했습니다. 동시에 표준화의 효과를 본부 단위 보고에 숫자로 제시할 수 있어야 했습니다. 제품 개선의 근거가 실제 동기였고, 성과 보고는 그 부산물입니다.</p>
+  </section>
+
+  <section class="wsec">
+    <h2 class="wsec__title"><span class="wsec__num">2</span> 맡은 역할</h2>
+    <p class="prose">TF 리드로서 지표 정의부터 수집·집계 서버, AWS 배포, 대시보드 프론트엔드까지 전 영역을 단독 구현했습니다. 프론트엔드와 백엔드를 혼자 만들면서도 API 계약서를 SSOT로 두고 먼저 갱신한 뒤 구현하는 규율을 유지했고, 그 덕에 구현 착수 전에 API 계약의 불일치를 발견해 고친 적도 있습니다.</p>
+  </section>
+
+  <section class="wsec">
+    <h2 class="wsec__title wsec__title--grid"><span class="wsec__num">3</span> 핵심 판단과 설계</h2>
+    <div class="judgment-grid">
+      <div class="judgment">
+        <h3>지표를 목적에서 역산했다</h3>
+        <p>측정 가능한 항목부터 나열하지 않고, 관리자가 알고 싶은 것(5가지 질문 축) → 그것을 답해 줄 지표 → 실제 수집 가능성의 순서로 설계했습니다. Reach, 가드레일 성과, 절차 퍼널, 효과, 준수율이 그 결과입니다.</p>
+      </div>
+      <div class="judgment">
+        <h3>일부러 재지 않기로 한 것</h3>
+        <p>세션에서 오간 개개인의 대화 내용은 수집하지 않습니다. 민감 파일 경고도 패턴 종류(env·token)만 남기고 경로는 남기지 않습니다. 경로를 넣으면 이 훅이 지키려는 대상의 위치가 수집 데이터에 쌓이는 자기모순이 되기 때문입니다.</p>
+      </div>
+      <div class="judgment">
+        <h3>평가 도구로 오용되지 않게</h3>
+        <p>관리자 전용 토큰을 분리하고(교차 사용 양방향 401) 사람 단위 지표를 권한으로 잠갔으며, 퍼널의 담당자 이름은 서버에서 권한별로 분기했습니다. 화면에서 가리더라도 개발자도구로는 보이는 문제를 서버에서 해결했습니다. 팀원 화면에는 "이 화면은 평가 자료가 아니에요. 표준이 자리잡도록 도울 사람을 찾는 데만 써요."라는 경고문을 직접 넣었습니다.</p>
+      </div>
+      <div class="judgment">
+        <h3>틀린 숫자보다 no_data</h3>
+        <p>모든 지표에 실측/추정 배지를 붙이고, '집계 대기'(아직 안 셌음)와 '데이터 없음'(집계했는데 0건)을 다른 상태로 구분했습니다. 모집단이 어긋나 1350%로 계산되던 지표는 화면에서 제외했습니다. 숫자가 스스로 신뢰도를 말하게 하는 설계입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wsec">
+    <h2 class="wsec__title"><span class="wsec__num">4</span> 해결 과정: 내 지표를 먼저 의심했다</h2>
+    <p class="prose-sm prose-sm--mid">수집 서버는 스킬·가드레일 이벤트 인제스트, git/GitLab 스캔 기반 재계산 파이프라인(매일 03:00 크론), 지수 백오프 재시도, 부분 실패 시 우아한 강등, recompute 실행 이력을 갖춥니다. AWS 배포(TLS·systemd·인증서 자동 갱신)는 인프라팀 가이드를 받아 직접 수행했습니다. 진짜 난도는 기술이 아니라 <strong>지표가 거짓말하지 않게 만드는 것</strong>이었습니다. 체감과 다른 숫자를 발견할 때마다 추적해 교정했습니다:</p>
+    <table class="table wtable wtable--flush">
+      <thead><tr><th>왜곡</th><th>원인과 조치</th></tr></thead>
+      <tbody>
+        <tr><td data-label="왜곡">준수율 4% 붕괴</td><td data-label="원인과 조치">미도입 레포 1,233커밋이 분모에 유입 → 로스터 + 도입일 2단계 게이트</td></tr>
+        <tr><td data-label="왜곡">커밋 130건 통째 누락</td><td data-label="원인과 조치">도입일이 미래로 밀리는 부트스트랩 역설 → 후보 최소값 채택 + 단조 감소만 허용</td></tr>
+        <tr><td data-label="왜곡">평균 리드타임 14.2h</td><td data-label="원인과 조치">소수 이상치가 지배 (중앙값 2.7h) → 업무시간 기준 중앙값·임계값 내 비율로 재정의</td></tr>
+        <tr><td data-label="왜곡">채택률 1350% → 100% 클램프</td><td data-label="원인과 조치">분자·분모의 모집단 불일치 → 화면에서 제외, 결과 지표(문서 위생)로 대체</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="wsec wsec--gap">
+    <h2 class="wsec__title wsec__title--grid"><span class="wsec__num">5</span> 정량적 결과 <span class="wsec__qualifier">(2026.08.26 대시보드 실측)</span></h2>
+    <div class="result-grid">
+      <div class="result"><div class="result__value">16건 차단</div><div class="result__note">가드레일이 위험 커밋을 실제로 막은 횟수</div></div>
+      <div class="result"><div class="result__value">경고 46건</div><div class="result__note">민감 파일: credential 11 · env 11 · secret 9 · token 9 · pem 6</div></div>
+      <div class="result"><div class="result__value">261건 → 94%</div><div class="result__note">작업 261건 중 머지 도달 246건 · 리뷰 후 머지 83%</div></div>
+      <div class="result"><div class="result__value">42건 포착</div><div class="result__note">리뷰 없이 머지된 작업 · 개선 우선순위를 드러내기 위해 별도 지표로 제공</div></div>
+      <div class="result"><div class="result__value">유닛 342 / e2e 117</div><div class="result__note">서버 테스트 · 선재 실패를 base 대조로 격리 (진술)</div></div>
+      <div class="result"><div class="result__value">고도화 근거</div><div class="result__note">스킬별 사용량이 플러그인 개선 우선순위의 근거로 사용됨</div></div>
+    </div>
+  </section>
+
+  <section class="wsec wsec--gap">
+    <h2 class="wsec__title wsec__title--shots"><span class="wsec__num">6</span> 실제 화면</h2>
+    <p class="note">이미지를 클릭하면 크게 볼 수 있습니다.</p>
+    <div class="shot-grid">
+      <figure>
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="플러그인 배포 현황입니다. 어느 프로젝트에 어떤 버전이 설치되어 있는지 추적합니다." aria-label="이미지 크게 보기">
+          <img class="shot" src="assets/ux ai hub_플러그인 배포 현황.png" alt="UX AI Hub 플러그인 배포 현황 대시보드" loading="lazy">
+        </button>
+        <figcaption class="shot-caption">플러그인 배포 현황입니다. 프로젝트별로 표준 버전을 추적하며, v1.4.0의 설치 기록 파일이 이 화면의 데이터 근거입니다.</figcaption>
+      </figure>
+      <figure>
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="집계형 도입 현황입니다. 사람 단위가 아닌 집계 수치로 도입 상태를 보여 줍니다." aria-label="이미지 크게 보기">
+          <img class="shot" src="assets/ux ai hub_집계형 도입 현황.png" alt="UX AI Hub 집계형 도입 현황 대시보드" loading="lazy">
+        </button>
+        <figcaption class="shot-caption">집계형 도입 현황입니다. 개인을 식별하지 않고 집계 수치로 보여 주는 기본 화면이며, 사람 단위 지표는 관리자 권한으로 분리했습니다.</figcaption>
+      </figure>
+      <figure>
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="가드레일 경고 현황입니다. 민감 파일 편집 경고 46건을 패턴별 분포로 보여 주며, 파일 경로는 수집하지 않습니다." aria-label="이미지 크게 보기">
+          <img class="shot" src="assets/ux ai hub_가드레일경고.png" alt="UX AI Hub 가드레일 경고 현황 대시보드" loading="lazy">
+        </button>
+        <figcaption class="shot-caption">가드레일 경고 화면입니다. 민감 파일 편집을 46건 경고했습니다. 데이터에는 파일 경로 대신 credential·env·secret·token·pem과 같은 패턴 종류만 저장합니다.</figcaption>
+      </figure>
+      <figure>
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="지표 신뢰도 표현입니다. 실측/추정 배지와 부분 산출, '집계 대기'와 '데이터 없음'의 구분이 실제 화면에 반영되어 있습니다." aria-label="이미지 크게 보기">
+          <img class="shot" src="assets/ux ai hub_지표 신뢰도 표현.png" alt="UX AI Hub 지표 신뢰도 표현: 실측/추정 배지와 산출 방식 설명" loading="lazy">
+        </button>
+        <figcaption class="shot-caption">지표 신뢰도 표현입니다. "숫자를 그대로 믿어도 되는지를 화면이 말하게 한다"는 주장을 실제로 구현한 화면입니다. 이 포트폴리오의 실측/진술 표기도 같은 원칙입니다.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wsec wsec--end">
+    <h2 class="wsec__title"><span class="wsec__num">7</span> 배운 점과 다음</h2>
+    <p class="prose">이 프로젝트의 실제 난도는 서버 구축이 아니라 지표가 거짓말하지 않게 만드는 것이었습니다. "체감과 다른데?"라는 감각을 무시하지 않고 추적하면 왜곡은 하나씩 교정할 수 있었고, 그 과정에서 "왜곡된 숫자보다 no_data가 낫다"가 판단 기준이 됐습니다.</p>
+    <p class="prose">현재 MVP 완료 후 UI/UX·기획 고도화 중이며, 수집 훅을 개발자 8명 전원으로 확산하는 작업과 LLM wiki + RAG 기반 팀 위키 설계가 병렬로 진행 중입니다.</p>
+  </section>
+
+  <div class="work-pager">
+    <a class="btn btn-ghost" href="work-02-ai-workflow.html">← 이전: 워크플로 표준화</a>
+    <a class="btn btn-secondary" href="work-04-campaign-report.html">다음: 캠페인 리포트 자동화 →</a>
+  </div>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="이미지 크게 보기" hidden>
+  <img class="lightbox__img" id="lightbox-img" src="" alt="">
+  <p class="lightbox__caption" id="lightbox-caption"></p>
+  <button class="lightbox__close" id="lightbox-close" type="button">닫기 ESC</button>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

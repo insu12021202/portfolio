@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>i-Nova: 전사 사내 LLM 챗봇 | 여인수</title>
+  <meta name="description" content="전사 200명 대상, 실사용 약 100명, 월 2.56억 토큰의 사내 LLM 챗봇 프론트엔드를 1년간 단독 개발한 기록.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ec3013'/%3E%3Ctext x='7' y='24' font-family='Arial' font-weight='800' font-size='20' fill='white'%3EY%3C/text%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="ds/styles.css">
+  <link rel="stylesheet" href="page.css">
+  <link rel="stylesheet" href="work.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="work-nav shell" aria-label="프로젝트 이동">
+    <a class="work-nav__link" href="index.html#work">← 전체 프로젝트</a>
+    <span class="work-nav__counter"><span class="work-nav__counter-label">SELECTED WORK </span>01 / 04</span>
+    <a class="work-nav__link work-nav__next" href="work-02-ai-workflow.html">다음: 워크플로 표준화 →</a>
+  </nav>
+</header>
+
+<main class="work-page shell">
+  <div class="work-hero">
+    <div class="work-hero__text">
+      <p class="work-page__kicker">01 · 사내 LLM 제품 개발·운영</p>
+      <h1 class="work-page__title">i-Nova<br>전사 사내 LLM 챗봇</h1>
+      <div class="hero-metrics">
+        <div class="hero-metric">
+          <div class="hero-metric__value">실사용자 약 100명</div>
+          <div class="hero-metric__note">전사 약 200명 대상 · 2026년 8월 확인</div>
+        </div>
+        <div class="hero-metric">
+          <div class="hero-metric__value">월 2.56억 토큰</div>
+          <div class="hero-metric__note">2026.07.27 – 08.26 실측 · 4개 벤더 운영</div>
+        </div>
+        <div class="hero-metric">
+          <div class="hero-metric__value">번들 −81%</div>
+          <div class="hero-metric__note">메인 번들 2,376KB → 455KB</div>
+        </div>
+      </div>
+      <p class="work-page__lead">착수 당시 본부 주력 과제였고, 현재 전사가 쓰는 메인 사내 LLM 챗봇입니다. 전사 약 200명을 대상으로 배포되어 약 100명이 실사용하며, 월 2.56억 토큰을 처리합니다. 프론트엔드를 0부터 1년간 단독으로 맡아 채팅에서 아티팩트 협업까지 확장했습니다.</p>
+    </div>
+    <div class="work-hero__media">
+      <figure>
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="모델 선택 화면입니다. 4개 벤더의 모델이 정보 탐색·문서화·아이디어 발상이라는 카테고리로 정리되어 있고, 실제 트래픽을 나눠 받습니다." aria-label="이미지 크게 보기">
+          <img class="shot" src="assets/inova_4개 벤더 운영 화면.png" alt="i-Nova 대화 모델 선택 화면" loading="lazy">
+        </button>
+        <figcaption class="shot-caption">모델 선택 화면입니다. Google·Anthropic·Perplexity·OpenAI 4개 벤더가 실제 트래픽을 나눠 받습니다.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="factbar">
+    <span><strong>기간</strong> 2025.07 – 2026.07 (약 1년)</span>
+    <span><strong>역할</strong> 프론트엔드 단독 개발 (개발·리뷰·검수 전 과정)</span>
+    <span><strong>MR</strong> 103건 작성 / 101건 머지 (전 프로젝트 중 최다)</span>
+    <span><strong>스택</strong> Vue 3 · TypeScript · SSE · TipTap</span>
+  </div>
+
+  <section class="wsec wsec--first">
+    <h2 class="wsec__title"><span class="wsec__num">1</span> 문제</h2>
+    <p class="prose">문제는 "채팅 UI를 만드는 것"이 아니었습니다. LLM은 규격대로 답하지 않고(출력이 계약이 아니라 확률), 브라우저에는 Canvas 최대 크기 같은 숨은 제약이 있으며, 전사 서비스에는 보안 감사 수준의 요건이 추가로 요구됩니다. 이런 조건에서 <strong>전사 서비스가 요구하는 운영 품질을 1년간 유지하는 것</strong>이 핵심 과제였습니다.</p>
+  </section>
+
+  <section class="wsec">
+    <h2 class="wsec__title"><span class="wsec__num">2</span> 맡은 역할</h2>
+    <p class="prose">초기 구축(0→1)부터 협업 기능까지 프론트엔드 전체를 단독으로 담당했습니다. 구체적인 범위는 멀티 LLM 채팅, SSO 인증/인가, 세션 관리, 파일 입력·미리보기(이미지·PDF·Office·PPT), 대화 폴더링·즐겨찾기·아카이브, 사고 과정 노출, 그리고 아티팩트의 생성·편집·버전 관리·Diff·공유·권한·편집 잠금·임시저장입니다.</p>
+  </section>
+
+  <section class="wsec">
+    <h2 class="wsec__title wsec__title--grid"><span class="wsec__num">3</span> 핵심 판단과 설계</h2>
+    <div class="judgment-grid">
+      <div class="judgment">
+        <h3>동시 편집 대신 편집 잠금</h3>
+        <p>사내 문서 협업 규모에서 CRDT/OT의 복잡도와 서버 비용을 감당할 이유가 없다고 판단해 편집 잠금을 택했습니다. 대신 잠금 방식의 알려진 약점(잠근 채 자리를 비우는 사람)을 heartbeat polling + 비활성 자동 해제로 선제 차단했습니다.</p>
+      </div>
+      <div class="judgment">
+        <h3>형식의 한계를 인정하는 경로</h3>
+        <p>GFM 테이블은 셀 내부 블록 요소를 지원하지 않아 복잡한 테이블 콘텐츠가 소실됐습니다. "전부 마크다운으로 변환한다"는 원칙을 고수하는 대신, 복잡한 테이블은 변환하지 않고 HTML로 유지하는 경로를 신설해 콘텐츠 소실을 막았습니다.</p>
+      </div>
+      <div class="judgment">
+        <h3>감사가 오기 전에 막는 보안</h3>
+        <p>외부 보안 감사가 예정된 상황에서 지적을 기다리지 않고 선제 조치했습니다. 공유 링크 로그인을 필수화하고, Open Redirect를 방어했으며(단위 테스트 22건), window.open을 통한 인증 우회를 차단하고, accessToken을 HttpOnly 쿠키로 전환했으며, 외부 IP에는 MFA를 적용했습니다. 전환에 따라온 Token Rotation의 refresh 중복 호출은 Promise 병합 패턴으로 일원화했습니다.</p>
+      </div>
+      <div class="judgment">
+        <h3>배포 경험에서 출발한 성능 개선</h3>
+        <p>개발 서버 배포를 직접 하다가 번들이 무겁다고 느껴 착수했습니다. 라우터 비동기 로드 + 아티팩트 컴포넌트 분리 + 벤더 청크 분리(vue·tiptap·office·markdown·pdf·utils)로 메인 번들을 2,376KB에서 455KB로 줄였고, 앱 코드만 바뀌면 벤더 청크 캐시가 유지되어 재방문 로딩에도 이득이 있습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wsec">
+    <h2 class="wsec__title"><span class="wsec__num">4</span> 해결 과정</h2>
+    <h3 class="wsub">1년간 확장해 온 과정</h3>
+    <table class="table wtable wtable--loose">
+      <thead><tr><th>시기</th><th>단계</th></tr></thead>
+      <tbody>
+        <tr><td data-label="시기">2025.07 – 09</td><td data-label="단계">0→1 단계: 채팅·SSO·세션, 입력 채널 확장(이미지·PDF), 멀티 모델 선택, 폴더링·아카이브, 사고 과정 노출</td></tr>
+        <tr><td data-label="시기">2025.10 – 11</td><td data-label="단계">아티팩트 1차: 생성·렌더링·에디터·버전 관리 및 Diff / 2차: SSE 실시간 렌더링·직접 편집·링크 공유</td></tr>
+        <tr><td data-label="시기">2025.12 – 2026.01</td><td data-label="단계">렌더링 품질 개선 · 번들 −81% · 대용량 PDF 변환 문제 해결</td></tr>
+        <tr><td data-label="시기">2026.01 – 03</td><td data-label="단계">보안 선제 조치 + HttpOnly 전환 · 아티팩트 협업(114파일/약 1만 줄) · Storybook + Vitest 테스트 환경</td></tr>
+      </tbody>
+    </table>
+    <h3 class="wsub">"모델이 규격대로 답하지 않는다"는 문제에 대응한 기록</h3>
+    <p class="prose-sm">LLM 프로덕트의 프론트엔드에만 존재하는 문제군을 하나씩 정의하고 해결했습니다. 예를 들면 LLM이 <code>•</code>·<code>→</code> 같은 비표준 불릿으로 답하는 문제(9종을 변환하되 들여쓰기·코드블록 보존), 자체 전처리 정규식이 오히려 볼드를 깨던 문제(marked가 이미 정상 처리하고 있었으므로 전처리를 제거), LaTeX를 지원하지 않는 문제(유니코드로 치환), 그리고 앞에서 설명한 GFM 테이블의 한계가 있었습니다.</p>
+    <h3 class="wsub wsub--spaced">대용량 PDF: 브라우저 제약 수준까지 확인한 원인 규명</h3>
+    <p class="prose-sm prose-sm--tight">47페이지 이상 아티팩트가 빈 PDF로 나오던 문제의 원인은 브라우저별 Canvas 최대 높이 제한(Chrome 약 16,384px / Safari 약 4,096px)이었습니다. 47페이지는 약 105,562px에 해당하기 때문에 렌더링 자체가 실패하고 있었습니다. 그래서 html2pdf.js를 제거하고 파이프라인을 직접 구성했습니다.</p>
+    <p class="flow">마크다운 → HTML → iframe 렌더링 → 코드블록 이미지화 → 청크 캡처(8,000px) → CPU 크롭 → PDF</p>
+    <p class="prose-sm">청크 높이는 모든 브라우저가 호환되는 8,000px로 고정하고, 페이지 높이의 정수 배로 설정해 페이지 경계에서 섹션이 소실되지 않게 했습니다.</p>
+  </section>
+
+  <section class="wsec wsec--gap">
+    <h2 class="wsec__title wsec__title--grid"><span class="wsec__num">5</span> 정량적 결과</h2>
+    <div class="result-grid">
+      <div class="result"><div class="result__value">월 2.56억 토큰</div><div class="result__note">2026.07.27 – 08.26 실측 (In 2.43억 / Out 0.136억)</div></div>
+      <div class="result"><div class="result__value">실사용자 약 100명</div><div class="result__note">전사 약 200명 대상 · 전 직원의 약 절반이 실사용 (진술, 2026년 8월 확인)</div></div>
+      <div class="result"><div class="result__value">4개 벤더</div><div class="result__note">Google 85.9% · Anthropic 13.0% · Perplexity 0.8% · OpenAI 0.3% (실측)</div></div>
+      <div class="result"><div class="result__value">2,376 → 455KB</div><div class="result__note">메인 번들 −81% (진술)</div></div>
+    </div>
+  </section>
+
+  <section class="wsec wsec--gap">
+    <h2 class="wsec__title wsec__title--shots"><span class="wsec__num">6</span> 실제 화면</h2>
+    <p class="note">이미지를 클릭하면 크게 볼 수 있습니다.</p>
+    <div class="shot-grid">
+      <figure>
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="사용량 대시보드입니다. 월 2.56억 토큰과 벤더별 분포를 이 화면에서 실측합니다." aria-label="이미지 크게 보기">
+          <img class="shot" src="assets/inova_사용량 대시보드 전체 요약.png" alt="i-Nova 사용량 대시보드 전체 요약: 토큰 사용량과 벤더 분포" loading="lazy">
+        </button>
+        <figcaption class="shot-caption">사용량 대시보드입니다. "월 2.56억 토큰"과 벤더 분포를 확인한 출처이며, 만들어 두기만 한 것이 아니라 운영 중인 서비스라는 근거이기도 합니다.</figcaption>
+      </figure>
+      <figure>
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="아티팩트 화면입니다. 대화로 생성한 문서를 에디터에서 직접 편집하고, 버전 목록과 복원, Diff로 관리합니다." aria-label="이미지 크게 보기">
+          <img class="shot" src="assets/inova_아티팩트.png" alt="i-Nova 아티팩트 편집 화면: 문서 에디터와 버전 관리" loading="lazy">
+        </button>
+        <figcaption class="shot-caption">아티팩트 화면입니다. 생성과 직접 편집, 버전 관리, Diff를 지원하며 SSE로 실시간 렌더링됩니다.</figcaption>
+      </figure>
+      <figure>
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="아티팩트 협업 화면입니다. 오른쪽 버전 내역 패널에 여러 사용자의 편집 이력이 시간순으로 남습니다. 114파일 / 약 1만 줄로, 단일 기능 가운데 규모가 가장 큽니다." aria-label="이미지 크게 보기">
+          <img class="shot" src="assets/inova_아티팩트협업.png" alt="i-Nova 아티팩트 협업 화면: 공유 문서와 버전 내역 타임라인" loading="lazy">
+        </button>
+        <figcaption class="shot-caption">아티팩트 협업 화면입니다. 초대와 권한, 편집 잠금, 변경 이력, 임시저장을 지원합니다. 114파일 / 약 1만 줄로, 단일 기능 가운데 규모가 가장 큽니다.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wsec wsec--end">
+    <h2 class="wsec__title"><span class="wsec__num">7</span> 배운 점과 다음</h2>
+    <p class="prose">LLM 프로덕트 프론트엔드의 핵심은 "출력이 계약이 아니라 확률"이라는 전제를 받아들이는 것이었습니다. 형식의 한계를 인정하고 변환하지 않는 경로를 만드는 일과, 라이브러리가 왜 실패하는지를 브라우저 제약 수준까지 확인해 규명하는 일은 모두 이 전제에서 나온 태도입니다.</p>
+    <p class="prose">남은 과제도 분명합니다. 번들 −81%가 실제 로딩 시간에 준 개선폭의 측정, 그리고 아티팩트 협업의 실사용률 확인은 아직 확보하지 못한 숫자입니다.</p>
+  </section>
+
+  <div class="work-pager">
+    <a class="btn btn-ghost" href="index.html#work">← 전체 프로젝트</a>
+    <a class="btn btn-secondary" href="work-02-ai-workflow.html">다음: 팀 AI 개발 워크플로 표준화 →</a>
+  </div>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="이미지 크게 보기" hidden>
+  <img class="lightbox__img" id="lightbox-img" src="" alt="">
+  <p class="lightbox__caption" id="lightbox-caption"></p>
+  <button class="lightbox__close" id="lightbox-close" type="button">닫기 ESC</button>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
