@@ -98,7 +98,7 @@
 
 .wsec__num { color: var(--color-accent); }
 
-/* The "(2026.08.26 대시보드 실측)" qualifier riding along with a heading. */
+/* The "(2026.08.26 대시보드 기준)" qualifier riding along with a heading. */
 .wsec__qualifier {
   font-size: 13px;
   font-weight: 400;

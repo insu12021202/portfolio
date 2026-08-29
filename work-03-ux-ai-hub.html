@@ -30,7 +30,7 @@
       <div class="hero-metrics">
         <div class="hero-metric">
           <div class="hero-metric__value">위험 커밋 16건 차단</div>
-          <div class="hero-metric__note">가드레일이 실제로 막은 커밋 (2026.08.26 실측)</div>
+          <div class="hero-metric__note">가드레일이 실제로 막은 커밋 (2026.08.26 기준)</div>
         </div>
         <div class="hero-metric">
           <div class="hero-metric__value">민감 파일 경고 46건</div>
@@ -86,7 +86,7 @@
       </div>
       <div class="judgment">
         <h3>틀린 숫자보다 no_data</h3>
-        <p>모든 지표에 실측/추정 배지를 붙이고, '집계 대기'(아직 안 셌음)와 '데이터 없음'(집계했는데 0건)을 다른 상태로 구분했습니다. 모집단이 어긋나 1350%로 계산되던 지표는 화면에서 제외했습니다. 숫자가 스스로 신뢰도를 말하게 하는 설계입니다.</p>
+        <p>모든 지표에 신뢰도 배지를 붙이고, '집계 대기'(아직 안 셌음)와 '데이터 없음'(집계했는데 0건)을 다른 상태로 구분했습니다. 모집단이 어긋나 1350%로 계산되던 지표는 화면에서 제외했습니다. 숫자가 스스로 신뢰도를 말하게 하는 설계입니다.</p>
       </div>
     </div>
   </section>
@@ -106,13 +106,13 @@
   </section>
 
   <section class="wsec wsec--gap">
-    <h2 class="wsec__title wsec__title--grid"><span class="wsec__num">5</span> 정량적 결과 <span class="wsec__qualifier">(2026.08.26 대시보드 실측)</span></h2>
+    <h2 class="wsec__title wsec__title--grid"><span class="wsec__num">5</span> 정량적 결과 <span class="wsec__qualifier">(2026.08.26 대시보드 기준)</span></h2>
     <div class="result-grid">
       <div class="result"><div class="result__value">16건 차단</div><div class="result__note">가드레일이 위험 커밋을 실제로 막은 횟수</div></div>
       <div class="result"><div class="result__value">경고 46건</div><div class="result__note">민감 파일: credential 11 · env 11 · secret 9 · token 9 · pem 6</div></div>
       <div class="result"><div class="result__value">261건 → 94%</div><div class="result__note">작업 261건 중 머지 도달 246건 · 리뷰 후 머지 83%</div></div>
       <div class="result"><div class="result__value">42건 포착</div><div class="result__note">리뷰 없이 머지된 작업 · 개선 우선순위를 드러내기 위해 별도 지표로 제공</div></div>
-      <div class="result"><div class="result__value">유닛 342 / e2e 117</div><div class="result__note">서버 테스트 · 선재 실패를 base 대조로 격리 (진술)</div></div>
+      <div class="result"><div class="result__value">유닛 342 / e2e 117</div><div class="result__note">서버 테스트 · 선재 실패를 base 대조로 격리</div></div>
       <div class="result"><div class="result__value">고도화 근거</div><div class="result__note">스킬별 사용량이 플러그인 개선 우선순위의 근거로 사용됨</div></div>
     </div>
   </section>
@@ -140,10 +140,10 @@
         <figcaption class="shot-caption">가드레일 경고 화면입니다. 민감 파일 편집을 46건 경고했습니다. 데이터에는 파일 경로 대신 credential·env·secret·token·pem과 같은 패턴 종류만 저장합니다.</figcaption>
       </figure>
       <figure>
-        <button class="zoom-trigger" type="button" data-lightbox data-cap="지표 신뢰도 표현입니다. 실측/추정 배지와 부분 산출, '집계 대기'와 '데이터 없음'의 구분이 실제 화면에 반영되어 있습니다." aria-label="이미지 크게 보기">
-          <img class="shot" src="assets/ux ai hub_지표 신뢰도 표현.png" alt="UX AI Hub 지표 신뢰도 표현: 실측/추정 배지와 산출 방식 설명" loading="lazy">
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="지표 신뢰도 표현입니다. 신뢰도 배지와 부분 산출, '집계 대기'와 '데이터 없음'의 구분이 실제 화면에 반영되어 있습니다." aria-label="이미지 크게 보기">
+          <img class="shot" src="assets/ux ai hub_지표 신뢰도 표현.png" alt="UX AI Hub 지표 신뢰도 표현: 신뢰도 배지와 산출 방식 설명" loading="lazy">
         </button>
-        <figcaption class="shot-caption">지표 신뢰도 표현입니다. "숫자를 그대로 믿어도 되는지를 화면이 말하게 한다"는 주장을 실제로 구현한 화면입니다. 이 포트폴리오의 실측/진술 표기도 같은 원칙입니다.</figcaption>
+        <figcaption class="shot-caption">지표 신뢰도 표현입니다. "숫자를 그대로 믿어도 되는지를 화면이 말하게 한다"는 주장을 실제로 구현한 화면입니다.</figcaption>
       </figure>
     </div>
   </section>

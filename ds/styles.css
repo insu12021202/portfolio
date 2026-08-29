@@ -118,7 +118,7 @@ figcaption {
   font-size: 14px; line-height: 1.2; color: var(--color-text); /* matches the .input 14px —
      the pair sits side by side in sign-up rows */
   background: transparent; border: 1px solid transparent;
-  padding: var(--space-2) calc(var(--space-3) * 1.2);
+  padding: 10px calc(var(--space-3) * 1.2) 6px;
   border-radius: var(--radius-md);
 }
 .btn svg { display: block; }

@@ -22,8 +22,8 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Archivo", "Pretendard Variable", Pretendard, system-ui, sans-serif;
 }
 
-a { color: var(--color-accent); }
-a:hover { color: var(--color-accent-600); }
+a:not(.btn) { color: var(--color-accent); }
+a:not(.btn):hover { color: var(--color-accent-600); }
 
 /* Every section is bounded to the same measure. The home page runs wide;
    detail pages narrow it by overriding --shell on the root. */
