@@ -150,11 +150,66 @@
   margin: 0 0 32px;
 }
 
+/* Title runs full width; below the rule the intro sits beside the portrait. */
+.hero__body {
+  border-top: 2px solid var(--color-divider);
+  padding-top: 32px;
+  margin-bottom: 56px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.42fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.hero__intro { min-width: 0; }
+
+.hero__portrait {
+  margin: 0;
+  min-width: 0;
+}
+
+.hero__portrait img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-neutral-300);
+  box-shadow: var(--shadow-sm);
+}
+
+/* On desktop the portrait matches the intro column's height. Absolute
+   positioning keeps the image out of the row's height calculation, so the
+   text decides how tall the row is; the photo then scales to that height
+   with its aspect ratio intact — the whole frame stays visible, nothing is
+   cropped. The column is a fixed width because the scaled photo's width
+   follows from its height, which barely moves across desktop sizes. */
+@media (min-width: 861px) {
+  .hero__body {
+    grid-template-columns: minmax(0, 1fr) 210px;
+    align-items: stretch;
+  }
+
+  .hero__portrait {
+    position: relative;
+    min-height: 200px;
+  }
+
+  .hero__portrait img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* A touch taller than the text column so the photo carries some weight;
+       it overhangs into the block's bottom margin rather than pushing the
+       page down. */
+    height: 110%;
+    width: auto;
+    max-width: 100%;
+  }
+}
+
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 56px;
+  margin-bottom: 0;
 }
 
 .hero__actions .btn { min-height: 44px; }
@@ -488,6 +543,15 @@
 .method .tag { margin-right: 6px; }
 
 /* ── Responsive ────────────────────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  .hero__body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .hero__portrait img { max-width: 320px; }
+}
 
 @media (max-width: 640px) {
   .hero,
