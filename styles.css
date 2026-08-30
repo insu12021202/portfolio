@@ -420,6 +420,28 @@
   margin-bottom: 36px;
 }
 
+/* Employer block above the timeline. */
+.exp-header { margin: 0 0 32px; }
+
+.exp-header__company {
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px;
+}
+
+.exp-header__period {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin: 0 0 4px;
+}
+
+.exp-header__role {
+  font-size: 14px;
+  color: var(--color-neutral-700);
+  margin: 0;
+}
+
 .timeline-row {
   border-top: 2px solid var(--color-divider);
   display: flex;
@@ -430,12 +452,15 @@
 
 .timeline-row:last-of-type { border-bottom: 2px solid var(--color-divider); }
 
+/* The left column now carries a full date rather than a bare year, so it
+   runs smaller and a little wider. */
 .timeline-row__year {
-  flex: 0 0 140px;
+  flex: 0 0 156px;
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 36px;
-  letter-spacing: -0.02em;
+  font-size: 20px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
   color: var(--color-accent);
 }
 
@@ -602,5 +627,5 @@
   .other-work__name { flex: 1 1 100%; }
   .other-work__date { flex: 0 0 auto; }
 
-  .timeline-row__year { flex: 0 0 auto; font-size: 30px; }
+  .timeline-row__year { flex: 1 1 100%; font-size: 18px; }
 }
