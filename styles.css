@@ -128,12 +128,14 @@
   margin: 0 0 20px;
 }
 
+/* The headline carries its own line break; the measure is left to the
+   container so the second line stays on one row on desktop. */
 .hero__title {
-  font-size: clamp(36px, 6.2vw, 78px);
-  line-height: 1.1;
+  font-size: clamp(30px, 4.4vw, 56px);
+  line-height: 1.15;
   letter-spacing: -0.02em;
   margin: 0 0 24px;
-  max-width: 18ch;
+  max-width: 100%;
   text-wrap: pretty;
 }
 
@@ -141,13 +143,23 @@
   font-size: clamp(16px, 1.6vw, 19px);
   line-height: 1.7;
   max-width: 62ch;
-  margin: 0 0 12px;
+  margin: 0 0 16px;
+}
+
+/* Supporting evidence for the pitch above — one step down in weight so the
+   lead paragraph stays the primary read. */
+.hero__evidence {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--color-neutral-800);
+  max-width: 62ch;
+  margin: 0 0 20px;
 }
 
 .hero__meta {
   font-size: 14px;
   color: var(--color-neutral-700);
-  margin: 0 0 32px;
+  margin: 0 0 28px;
 }
 
 /* Title runs full width; below the rule the intro sits beside the portrait. */
@@ -183,7 +195,7 @@
    follows from its height, which barely moves across desktop sizes. */
 @media (min-width: 861px) {
   .hero__body {
-    grid-template-columns: minmax(0, 1fr) 210px;
+    grid-template-columns: minmax(0, 1fr) 280px;
     align-items: stretch;
   }
 
@@ -198,10 +210,12 @@
     right: 0;
     /* A touch taller than the text column so the photo carries some weight;
        it overhangs into the block's bottom margin rather than pushing the
-       page down. */
+       page down. No max-width here on purpose: capping the width while the
+       height is fixed would stretch the photo out of its aspect ratio, and
+       the design system sets a global img { max-width: 100% }. */
     height: 110%;
     width: auto;
-    max-width: 100%;
+    max-width: none;
   }
 }
 
@@ -238,9 +252,6 @@
   align-items: baseline;
   gap: 10px;
 }
-
-/* Deliberately smaller than the section headlines: the overview is a
-   reference strip, not the loudest thing on the page. */
 
 /* Deliberately smaller than the section headlines: the overview is a
    reference strip, not the loudest thing on the page. */
