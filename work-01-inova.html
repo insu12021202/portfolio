@@ -70,15 +70,33 @@
 
   <section class="wsec">
     <h2 class="wsec__title"><span class="wsec__num">2</span> 맡은 역할</h2>
-    <p class="prose">초기 구축(0→1)부터 협업 기능까지 프론트엔드 전체를 단독으로 담당했습니다. 구체적인 범위는 멀티 LLM 채팅, SSO 인증/인가, 세션 관리, 파일 입력·미리보기(이미지·PDF·Office·PPT), 대화 폴더링·즐겨찾기·아카이브, 사고 과정 노출, 그리고 아티팩트의 생성·편집·버전 관리·Diff·공유·권한·편집 잠금·임시저장입니다.</p>
+    <h3 class="wsub">초기 PoC · 전체 설계와 FE·BE 단독 구현</h3>
+    <p class="prose-sm prose-sm--loose">LiteLLM을 활용해 최소 기능의 사내 챗봇을 설계하고, 프론트엔드와 백엔드를 연결한 전체 동작 흐름을 단독으로 구현했습니다.</p>
+    <h3 class="wsub">정식 개발·고도화 · 4인 팀의 프론트엔드 전담</h3>
+    <p class="prose-sm prose-sm--tight">백엔드 개발자·기획자·디자이너와 협업하며 프론트엔드 전체를 담당했습니다. 베타 파일럿의 피드백을 반영해 기능을 확장했으며, 담당 범위는 다음과 같습니다.</p>
+    <ul class="role-list">
+      <li>
+        <span class="role-list__label">채팅과 파일 활용</span>
+        <span class="role-list__detail">멀티 LLM 모델 선택, 스트리밍 응답, 파일 입력·미리보기, 대화 기록 관리</span>
+      </li>
+      <li>
+        <span class="role-list__label">인증과 접근 제어</span>
+        <span class="role-list__detail">SSO 연동, 세션 관리, 사용자 권한에 따른 화면과 기능 접근 처리</span>
+      </li>
+      <li>
+        <span class="role-list__label">아티팩트 협업</span>
+        <span class="role-list__detail">생성·편집·공유, 버전 관리와 변경 비교, 편집 잠금, 변경 이력과 임시저장</span>
+      </li>
+    </ul>
   </section>
 
   <section class="wsec">
     <h2 class="wsec__title wsec__title--grid"><span class="wsec__num">3</span> 핵심 판단과 설계</h2>
     <div class="judgment-grid">
       <div class="judgment">
-        <h3>동시 편집 대신 편집 잠금</h3>
-        <p>사내 문서 협업 규모에서 CRDT/OT의 복잡도와 서버 비용을 감당할 이유가 없다고 판단해 편집 잠금을 택했습니다. 대신 잠금 방식의 알려진 약점(잠근 채 자리를 비우는 사람)을 heartbeat polling + 비활성 자동 해제로 선제 차단했습니다.</p>
+        <h3>일정과 안정성을 고려한 편집 방식 선택</h3>
+        <p>여러 사람이 동시에 문서를 수정하려면 변경 내용의 병합과 충돌 처리 등 설계·검증해야 할 범위가 커집니다. 당시 일정 안에서 협업 기능을 빠르게 제공하기 위해, 구현과 검증 범위를 관리할 수 있는 편집 잠금 방식을 선택했습니다.</p>
+        <p>폴링으로 편집 상태를 확인하고 한 번에 한 명만 수정하도록 구성해, 동시 변경을 병합하는 복잡도를 줄였습니다. 이를 통해 문서를 공유하고 편집하는 핵심 흐름을 안정적으로 제공하는 데 집중했습니다.</p>
       </div>
       <div class="judgment">
         <h3>형식의 한계를 인정하는 경로</h3>
@@ -143,10 +161,10 @@
         <figcaption class="shot-caption">아티팩트 화면입니다. 생성과 직접 편집, 버전 관리, Diff를 지원하며 SSE로 실시간 렌더링됩니다.</figcaption>
       </figure>
       <figure>
-        <button class="zoom-trigger" type="button" data-lightbox data-cap="아티팩트 협업 화면입니다. 오른쪽 버전 내역 패널에 여러 사용자의 편집 이력이 시간순으로 남습니다. 114파일 / 약 1만 줄로, 단일 기능 가운데 규모가 가장 큽니다." aria-label="이미지 크게 보기">
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="아티팩트 협업 화면입니다. 편집 잠금으로 한 번에 한 명만 수정하고, 오른쪽 버전 내역 패널에 편집 이력이 시간순으로 남습니다." aria-label="이미지 크게 보기">
           <img class="shot" src="assets/inova_아티팩트협업.png" alt="i-Nova 아티팩트 협업 화면: 공유 문서와 버전 내역 타임라인" loading="lazy">
         </button>
-        <figcaption class="shot-caption">아티팩트 협업 화면입니다. 초대와 권한, 편집 잠금, 변경 이력, 임시저장을 지원합니다. 114파일 / 약 1만 줄로, 단일 기능 가운데 규모가 가장 큽니다.</figcaption>
+        <figcaption class="shot-caption">아티팩트 협업 화면입니다. 초대와 권한, 변경 이력, 임시저장을 지원하며, 편집 잠금으로 한 번에 한 명만 문서를 수정합니다. 114파일 / 약 1만 줄 규모입니다.</figcaption>
       </figure>
     </div>
   </section>
