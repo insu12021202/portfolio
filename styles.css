@@ -293,10 +293,14 @@
   padding: 44px 0 56px;
 }
 
+/* The screenshot column is shorter than the text beside it; centre it so the
+   image does not hang from the top of the card with a gap underneath. When
+   the columns stack there is one item per line, so this has no effect. */
 .work-item__row {
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
+  align-items: center;
 }
 
 .work-item__text {
@@ -327,16 +331,21 @@
 
 .work-item__meta {
   font-size: 13px;
+  line-height: 1.6;
   color: var(--color-neutral-600);
   margin: 0 0 18px;
 }
 
+/* A card may run to more than one paragraph; keep them closer to each other
+   than to the metrics block that follows. */
 .work-item__body {
   font-size: 15.5px;
   line-height: 1.75;
   max-width: 58ch;
-  margin: 0 0 20px;
+  margin: 0 0 12px;
 }
+
+.work-item__body:last-of-type { margin-bottom: 20px; }
 
 .work-item .btn { min-height: 44px; }
 
