@@ -7,10 +7,14 @@ Frontend Engineer · AI Product Builder 개인 포트폴리오 사이트.
 ## 실행
 
 ```bash
-python -m http.server 4321
+python devserver.py
 ```
 
 `http://localhost:4321` 로 접속합니다.
+
+`python -m http.server` 대신 `devserver.py` 를 쓰는 이유는 캐시 때문입니다. 기본 서버는 캐시 관련 헤더를 보내지 않아서, CSS를 고쳐도 브라우저가 이전 파일을 계속 쓰고 화면이 그대로인 것처럼 보입니다. `devserver.py` 는 모든 응답에 `Cache-Control: no-store` 를 붙이고 `Last-Modified` 를 빼서 매 요청마다 새 파일을 내려줍니다. localhost 에만 바인딩합니다.
+
+이미 옛 파일을 캐시한 브라우저라면 한 번은 강제 새로고침(`Ctrl` + `Shift` + `R`)이 필요합니다. 그 이후로는 일반 새로고침으로 항상 최신 파일을 받습니다.
 
 ## 구조
 
@@ -27,7 +31,8 @@ python -m http.server 4321
 | `work.css` | 상세 페이지 전용 레이아웃 |
 | `main.js` | 스크롤 스파이, 모바일 메뉴, 라이트박스 (전 페이지 공용) |
 | `assets/` | 프로젝트 스크린샷 |
-| `.claude/launch.json` | 로컬 미리보기용 정적 서버 설정 |
+| `devserver.py` | 로컬 미리보기용 정적 서버 (캐시 방지) |
+| `.claude/launch.json` | 미리보기 서버 실행 설정 |
 
 ### 스타일 레이어
 
