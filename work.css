@@ -397,6 +397,13 @@
   margin-top: 6px;
 }
 
+/* A caveat that qualifies the whole metric row, not one figure in it. */
+.hero-metrics__note {
+  font-size: 12.5px;
+  color: var(--color-neutral-700);
+  margin: -16px 0 24px;
+}
+
 /* Provenance notice above a screenshot gallery whose images post-date the
    project being described. */
 .provenance {
