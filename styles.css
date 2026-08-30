@@ -488,20 +488,22 @@
   margin-bottom: 32px;
 }
 
+/* Five entries, each carrying a description plus its evidence, so the
+   columns run wider than the previous eight short items. */
 .capability-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
   gap: 0 48px;
 }
 
 .capability {
   border-top: 2px solid var(--color-divider);
-  padding: 18px 0 22px;
+  padding: 18px 0 24px;
 }
 
 .capability h3 {
   font-size: 17px;
-  margin: 0 0 6px;
+  margin: 0 0 8px;
 }
 
 .capability p {
@@ -509,6 +511,29 @@
   line-height: 1.65;
   color: var(--color-neutral-700);
   margin: 0;
+}
+
+/* Evidence, then the supporting stack — each a step quieter than the
+   description above it. */
+.capability .capability__evidence {
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.capability .capability__stack {
+  font-size: 12.5px;
+  color: var(--color-neutral-600);
+  margin-top: 4px;
+}
+
+.capability__label {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 10.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-neutral-600);
+  margin-right: 6px;
 }
 
 /* ── Contact ───────────────────────────────────────────────────────────── */
@@ -520,19 +545,14 @@
 
 .contact__inner { padding: clamp(56px, 8vw, 96px) 24px; }
 
+/* A closing statement rather than a headline: it runs to several lines, so
+   it needs more leading than the design system's tight heading default. */
 .contact__title {
   font-size: clamp(30px, 4.4vw, 56px);
+  line-height: 1.2;
   letter-spacing: -0.02em;
-  margin: 0 0 16px;
-  color: #ffffff;
-}
-
-.contact__lead {
-  font-size: 16px;
-  line-height: 1.7;
   margin: 0 0 32px;
-  max-width: 56ch;
-  color: rgba(255, 255, 255, 0.92);
+  color: #ffffff;
 }
 
 .contact__actions {
