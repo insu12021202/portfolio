@@ -216,6 +216,15 @@
   margin-top: 6px;
 }
 
+/* Supporting detail under a results grid: activity, not an outcome. */
+.result-footnote {
+  font-size: 13px;
+  color: var(--color-neutral-700);
+  border-top: 1px solid var(--color-neutral-300);
+  margin: 4px 0 0;
+  padding-top: 12px;
+}
+
 .pullquote {
   border-left: none;
   border-top: 2px solid var(--color-divider);
@@ -309,7 +318,8 @@
 .work-hero__text { min-width: 0; }
 .work-hero__media { min-width: 0; }
 
-.work-hero .work-page__lead { margin-bottom: 0; }
+.work-hero .work-page__lead { margin-bottom: 14px; }
+.work-hero .work-page__lead:last-child { margin-bottom: 0; }
 
 /* Headline metrics — the two or three numbers that carry the project. */
 .hero-metrics {

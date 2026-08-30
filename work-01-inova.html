@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>i-Nova: 전사 사내 LLM 챗봇 | 여인수</title>
+  <title>i-Nova · 사내 LLM 챗봇 | 여인수</title>
   <meta name="description" content="전사 200명 대상, 실사용 약 100명, 월 2.56억 토큰의 사내 LLM 챗봇 프론트엔드를 1년간 단독 개발한 기록.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ec3013'/%3E%3Ctext x='7' y='24' font-family='Arial' font-weight='800' font-size='20' fill='white'%3EY%3C/text%3E%3C/svg%3E">
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@
   <div class="work-hero">
     <div class="work-hero__text">
       <p class="work-page__kicker">01 · 사내 LLM 제품 개발·운영</p>
-      <h1 class="work-page__title">i-Nova<br>전사 사내 LLM 챗봇</h1>
+      <h1 class="work-page__title">i-Nova<br>사내 LLM 챗봇</h1>
       <div class="hero-metrics">
         <div class="hero-metric">
           <div class="hero-metric__value">실사용자 약 100명</div>
@@ -37,32 +37,35 @@
           <div class="hero-metric__note">2026.07.27 – 08.26 · Google·Anthropic·Perplexity·OpenAI 모델 운영</div>
         </div>
         <div class="hero-metric">
-          <div class="hero-metric__value">번들 −81%</div>
-          <div class="hero-metric__note">메인 번들 2,376KB → 455KB</div>
+          <div class="hero-metric__value">PoC → 정식 서비스</div>
+          <div class="hero-metric__note">최소 기능으로 가능성을 확인한 뒤 팀과 함께 고도화</div>
         </div>
       </div>
-      <p class="work-page__lead">착수 당시 본부 주력 과제였고, 현재 전사가 쓰는 메인 사내 LLM 챗봇입니다. 전사 약 200명을 대상으로 배포되어 약 100명이 실사용하며, 월 2.56억 토큰을 처리합니다. 프론트엔드를 0부터 1년간 단독으로 맡아 채팅에서 아티팩트 협업까지 확장했습니다.</p>
+      <p class="work-page__lead">구성원 누구나 업무에 맞는 LLM 모델을 선택하고, 대화와 생성 문서를 함께 활용할 수 있는 사내 환경을 만들고자 했습니다. LiteLLM을 활용한 최소 기능의 챗봇을 단독으로 설계·구현하고, 팀장님·본부장님 리뷰를 거쳐 팀과 함께 정식 서비스로 발전시켰습니다.</p>
+      <p class="work-page__lead">베타 파일럿에서 받은 마케터의 HTML 문서 공동 작업 요구는 아티팩트 협업 기능으로 확장했습니다. 현재는 전사 약 200명을 대상으로 약 100명이 실사용하고 있습니다.</p>
     </div>
     <div class="work-hero__media">
       <figure>
-        <button class="zoom-trigger" type="button" data-lightbox data-cap="모델 선택 화면입니다. Google·Anthropic·Perplexity·OpenAI의 모델이 정보 탐색·문서화·아이디어 발상이라는 카테고리로 정리되어 있고, 실제 트래픽을 나눠 받습니다." aria-label="이미지 크게 보기">
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="업무에 맞는 LLM 모델을 선택하는 화면입니다." aria-label="이미지 크게 보기">
           <img class="shot" src="assets/inova_4개 벤더 운영 화면.png" alt="i-Nova 대화 모델 선택 화면" loading="lazy">
         </button>
-        <figcaption class="shot-caption">모델 선택 화면입니다. Google·Anthropic·Perplexity·OpenAI 네 회사의 모델이 실제 트래픽을 나눠 받습니다.</figcaption>
+        <figcaption class="shot-caption">업무에 맞는 LLM 모델을 선택하는 화면입니다.</figcaption>
       </figure>
     </div>
   </div>
 
   <div class="factbar">
     <span><strong>기간</strong> 2025.07 – 2026.07 (약 1년)</span>
-    <span><strong>역할</strong> 프론트엔드 단독 개발 (개발·리뷰·검수 전 과정)</span>
-    <span><strong>MR</strong> 103건 작성 / 101건 머지 (전 프로젝트 중 최다)</span>
+    <span><strong>초기 PoC</strong> FE·BE 단독 설계·구현</span>
+    <span><strong>정식 개발</strong> BE 개발자·기획자·디자이너와 협업하며 프론트엔드 전담</span>
     <span><strong>스택</strong> Vue 3 · TypeScript · SSE · TipTap</span>
   </div>
 
   <section class="wsec wsec--first">
-    <h2 class="wsec__title"><span class="wsec__num">1</span> 문제</h2>
-    <p class="prose">문제는 "채팅 UI를 만드는 것"이 아니었습니다. LLM은 규격대로 답하지 않고(출력이 계약이 아니라 확률), 브라우저에는 Canvas 최대 크기 같은 숨은 제약이 있으며, 전사 서비스에는 보안 감사 수준의 요건이 추가로 요구됩니다. 이런 조건에서 <strong>전사 서비스가 요구하는 운영 품질을 1년간 유지하는 것</strong>이 핵심 과제였습니다.</p>
+    <h2 class="wsec__title"><span class="wsec__num">1</span> 시작 배경과 목표</h2>
+    <p class="prose">사내 AI 활용을 확대하려면, 먼저 구성원 누구나 접근해 업무에 맞는 LLM 모델을 선택할 수 있는 공통 환경이 필요하다고 판단했습니다. 여러 제공사의 모델을 한곳에서 활용할 수 있는 사내 챗봇을 첫 단계로 삼았습니다.</p>
+    <p class="prose">이후에는 팀별 대화와 생성 문서 공유로 확장하고, 사내 활용 데이터를 바탕으로 필요한 기능을 발전시키고자 했습니다. 챗봇 하나를 만드는 데 그치지 않고, 구성원의 업무에 맞춰 계속 고도화할 수 있는 출발점을 마련하는 것이 목표였습니다.</p>
+    <p class="prose">첫 검증에서는 최소 기능의 챗봇이 실제로 동작하는 모습을 구현해, 관계자와 사내 서비스로의 발전 가능성을 함께 판단하고자 했습니다.</p>
   </section>
 
   <section class="wsec">
@@ -120,6 +123,7 @@
       <div class="result"><div class="result__value">4개사 모델</div><div class="result__note">Google 85.9% · Anthropic 13.0% · Perplexity 0.8% · OpenAI 0.3%</div></div>
       <div class="result"><div class="result__value">2,376 → 455KB</div><div class="result__note">메인 번들 −81%</div></div>
     </div>
+    <p class="result-footnote">개발 이력: MR 103건 작성 / 101건 머지</p>
   </section>
 
   <section class="wsec wsec--gap">
