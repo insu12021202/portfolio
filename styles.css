@@ -238,11 +238,12 @@
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 0 40px;
 }
 
 .stat {
+  --stat-value-size: clamp(22px, 2.4vw, 28px);
   border-top: 2px solid var(--color-divider);
   padding: 16px 0 20px;
 }
@@ -253,12 +254,20 @@
   gap: 10px;
 }
 
+/* One of the three figures runs to two lines. Reserve two lines for all of
+   them in the multi-column layout so the descriptions below start on the
+   same baseline; in the single-column layout each box sizes to its own
+   content. */
+@media (min-width: 641px) {
+  .stat__head { min-height: calc(var(--stat-value-size) * 1.1 * 2); }
+}
+
 /* Deliberately smaller than the section headlines: the overview is a
    reference strip, not the loudest thing on the page. */
 .stat__value {
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: clamp(22px, 2.4vw, 28px);
+  font-size: var(--stat-value-size);
   letter-spacing: -0.02em;
   line-height: 1.1;
 }
@@ -447,7 +456,7 @@
 
 .capability-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 0 48px;
 }
 
