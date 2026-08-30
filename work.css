@@ -113,6 +113,12 @@
 
 .wsub--spaced { margin: 12px 0 10px; }
 
+/* One level below .wsub, for cases listed under a shared sub-heading. */
+.wsub-sm {
+  font-size: 15px;
+  margin: 0 0 6px;
+}
+
 /* ── Prose ─────────────────────────────────────────────────────────────── */
 
 .prose {
@@ -259,6 +265,7 @@
 /* Supporting detail under a results grid: activity, not an outcome. */
 .result-footnote {
   font-size: 13px;
+  line-height: 1.75;
   color: var(--color-neutral-700);
   border-top: 1px solid var(--color-neutral-300);
   margin: 4px 0 0;
@@ -450,6 +457,10 @@
   color: var(--color-neutral-800);
   margin-top: 4px;
 }
+
+/* When each step carries a full sentence rather than a phrase. */
+.steps--loose { margin-bottom: 28px; }
+.steps--loose li { padding-top: 14px; padding-bottom: 14px; }
 
 /* ── Responsive ────────────────────────────────────────────────────────── */
 

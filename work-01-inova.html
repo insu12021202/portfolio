@@ -99,49 +99,50 @@
         <p>폴링으로 편집 상태를 확인하고 한 번에 한 명만 수정하도록 구성해, 동시 변경을 병합하는 복잡도를 줄였습니다. 이를 통해 문서를 공유하고 편집하는 핵심 흐름을 안정적으로 제공하는 데 집중했습니다.</p>
       </div>
       <div class="judgment">
-        <h3>형식의 한계를 인정하는 경로</h3>
-        <p>GFM 테이블은 셀 내부 블록 요소를 지원하지 않아 복잡한 테이블 콘텐츠가 소실됐습니다. "전부 마크다운으로 변환한다"는 원칙을 고수하는 대신, 복잡한 테이블은 변환하지 않고 HTML로 유지하는 경로를 신설해 콘텐츠 소실을 막았습니다.</p>
+        <h3>전사 서비스의 인증과 접근 제어 보완</h3>
+        <p>외부 보안 감사에 대비해 챗봇의 로그인과 공유 기능에서 접근 조건을 점검했습니다. 공유 링크에서도 로그인을 필수화하고, 외부 IP 접속에는 추가 인증(MFA)을 적용했습니다.</p>
+        <p>리다이렉트 경로를 검증하고 새 창을 통한 인증 우회 경로를 차단했습니다. 또한 HttpOnly 쿠키 기반 인증에 맞춰 프론트엔드의 세션 처리를 정비하고, 중복된 토큰 갱신 요청을 하나로 묶어 처리하도록 개선했습니다.</p>
       </div>
       <div class="judgment">
-        <h3>감사가 오기 전에 막는 보안</h3>
-        <p>외부 보안 감사가 예정된 상황에서 지적을 기다리지 않고 선제 조치했습니다. 공유 링크 로그인을 필수화하고, Open Redirect를 방어했으며(단위 테스트 22건), window.open을 통한 인증 우회를 차단하고, accessToken을 HttpOnly 쿠키로 전환했으며, 외부 IP에는 MFA를 적용했습니다. 전환에 따라온 Token Rotation의 refresh 중복 호출은 Promise 병합 패턴으로 일원화했습니다.</p>
-      </div>
-      <div class="judgment">
-        <h3>배포 경험에서 출발한 성능 개선</h3>
-        <p>개발 서버 배포를 직접 하다가 번들이 무겁다고 느껴 착수했습니다. 라우터 비동기 로드 + 아티팩트 컴포넌트 분리 + 벤더 청크 분리(vue·tiptap·office·markdown·pdf·utils)로 메인 번들을 2,376KB에서 455KB로 줄였고, 앱 코드만 바뀌면 벤더 청크 캐시가 유지되어 재방문 로딩에도 이득이 있습니다.</p>
+        <h3>메인 번들 분리와 용량 축소</h3>
+        <p>프론트엔드 번들 구성을 점검하고, 라우터의 비동기 로딩과 아티팩트 컴포넌트·외부 라이브러리 코드 분리를 적용했습니다. 메인 번들을 2,376KB에서 455KB로 줄였으며, 앱 코드와 라이브러리 코드를 분리해 변경 범위에 따라 캐시를 활용할 수 있도록 구성했습니다.</p>
       </div>
     </div>
   </section>
 
   <section class="wsec">
     <h2 class="wsec__title"><span class="wsec__num">4</span> 해결 과정</h2>
-    <h3 class="wsub">1년간 확장해 온 과정</h3>
-    <table class="table wtable wtable--loose">
-      <thead><tr><th>시기</th><th>단계</th></tr></thead>
-      <tbody>
-        <tr><td data-label="시기">2025.07 – 09</td><td data-label="단계">0→1 단계: 채팅·SSO·세션, 입력 채널 확장(이미지·PDF), 멀티 모델 선택, 폴더링·아카이브, 사고 과정 노출</td></tr>
-        <tr><td data-label="시기">2025.10 – 11</td><td data-label="단계">아티팩트 1차: 생성·렌더링·에디터·버전 관리 및 Diff / 2차: SSE 실시간 렌더링·직접 편집·링크 공유</td></tr>
-        <tr><td data-label="시기">2025.12 – 2026.01</td><td data-label="단계">렌더링 품질 개선 · 번들 −81% · 대용량 PDF 변환 문제 해결</td></tr>
-        <tr><td data-label="시기">2026.01 – 03</td><td data-label="단계">보안 선제 조치 + HttpOnly 전환 · 아티팩트 협업(114파일/약 1만 줄) · Storybook + Vitest 테스트 환경</td></tr>
-      </tbody>
-    </table>
-    <h3 class="wsub">"모델이 규격대로 답하지 않는다"는 문제에 대응한 기록</h3>
-    <p class="prose-sm">LLM 프로덕트의 프론트엔드에만 존재하는 문제군을 하나씩 정의하고 해결했습니다. 예를 들면 LLM이 <code>•</code>·<code>→</code> 같은 비표준 불릿으로 답하는 문제(9종을 변환하되 들여쓰기·코드블록 보존), 자체 전처리 정규식이 오히려 볼드를 깨던 문제(marked가 이미 정상 처리하고 있었으므로 전처리를 제거), LaTeX를 지원하지 않는 문제(유니코드로 치환), 그리고 앞에서 설명한 GFM 테이블의 한계가 있었습니다.</p>
-    <h3 class="wsub wsub--spaced">대용량 PDF: 브라우저 제약 수준까지 확인한 원인 규명</h3>
-    <p class="prose-sm prose-sm--tight">47페이지 이상 아티팩트가 빈 PDF로 나오던 문제의 원인은 브라우저별 Canvas 최대 높이 제한(Chrome 약 16,384px / Safari 약 4,096px)이었습니다. 47페이지는 약 105,562px에 해당하기 때문에 렌더링 자체가 실패하고 있었습니다. 그래서 html2pdf.js를 제거하고 파이프라인을 직접 구성했습니다.</p>
-    <p class="flow">마크다운 → HTML → iframe 렌더링 → 코드블록 이미지화 → 청크 캡처(8,000px) → CPU 크롭 → PDF</p>
-    <p class="prose-sm">청크 높이는 모든 브라우저가 호환되는 8,000px로 고정하고, 페이지 높이의 정수 배로 설정해 페이지 경계에서 섹션이 소실되지 않게 했습니다.</p>
+    <h3 class="wsub">PoC에서 협업 기능 고도화까지</h3>
+    <ol class="steps steps--loose">
+      <li>
+        <div class="steps__title">약 1주 만에 최소 PoC 구현과 첫 리뷰</div>
+        <div class="steps__note">LiteLLM을 활용해 최소 기능의 챗봇을 FE·BE 단독으로 구현하고, 약 1주 만에 팀장님 리뷰를 진행했습니다. 이후 본부장님 리뷰로 이어지며 정식 서비스로 발전시키는 방향을 확인했습니다.</div>
+      </li>
+      <li>
+        <div class="steps__title">4인 팀으로 정식 서비스 개발</div>
+        <div class="steps__note">백엔드 개발자·기획자·디자이너와 함께 서비스를 구체화하고, 프론트엔드를 전담했습니다. 채팅·모델 선택·파일 입력·인증 등 구성원이 실제로 사용할 기능을 구현했습니다.</div>
+      </li>
+      <li>
+        <div class="steps__title">베타 피드백을 협업 기능으로 확장</div>
+        <div class="steps__note">베타 파일럿의 피드백 채널을 통해 마케터의 HTML 문서 공동 작업 요구를 확인했습니다. 아티팩트 협업 PoC를 빠르게 구현한 뒤, 한 번에 한 명이 편집하는 방식으로 정식 기능을 고도화했습니다.</div>
+      </li>
+    </ol>
+    <h3 class="wsub">운영 중 개선 사례</h3>
+    <h4 class="wsub-sm">생성 문서의 내용과 표시 형식 보완</h4>
+    <p class="prose-sm prose-sm--loose">LLM 응답을 화면에 표시하는 과정에서 불릿과 강조 표현이 깨지거나, 복잡한 표의 내용이 누락되는 문제를 확인했습니다. 불필요한 전처리는 제거하고, 마크다운 변환 과정에서 정보가 손실되는 표는 HTML로 유지하도록 처리 경로를 조정했습니다.</p>
+    <h4 class="wsub-sm">긴 문서의 PDF 다운로드 개선</h4>
+    <p class="prose-sm">긴 아티팩트를 PDF로 내려받을 때 빈 문서가 생성되는 문제를 확인했습니다. 문서 전체를 한 번에 이미지로 만드는 방식의 크기 제약을 확인하고, 문서를 여러 영역으로 나누어 캡처한 뒤 페이지 단위로 PDF를 구성하는 방식으로 변경했습니다.</p>
   </section>
 
   <section class="wsec wsec--gap">
-    <h2 class="wsec__title wsec__title--grid"><span class="wsec__num">5</span> 정량적 결과</h2>
+    <h2 class="wsec__title wsec__title--grid"><span class="wsec__num">5</span> 검증과 운영 결과</h2>
     <div class="result-grid">
-      <div class="result"><div class="result__value">월 2.56억 토큰</div><div class="result__note">2026.07.27 – 08.26 (In 2.43억 / Out 0.136억)</div></div>
-      <div class="result"><div class="result__value">실사용자 약 100명</div><div class="result__note">전사 약 200명 대상 · 전 직원의 약 절반이 실사용 (2026년 8월 확인)</div></div>
-      <div class="result"><div class="result__value">4개사 모델</div><div class="result__note">Google 85.9% · Anthropic 13.0% · Perplexity 0.8% · OpenAI 0.3%</div></div>
-      <div class="result"><div class="result__value">2,376 → 455KB</div><div class="result__note">메인 번들 −81%</div></div>
+      <div class="result"><div class="result__value">약 1주</div><div class="result__note">최소 챗봇 PoC 구현부터 첫 팀장님 리뷰까지</div></div>
+      <div class="result"><div class="result__value">실사용자 약 100명</div><div class="result__note">전사 약 200명 대상 · 2026년 8월 확인</div></div>
+      <div class="result"><div class="result__value">월 2.56억 토큰</div><div class="result__note">2026.07.27 – 08.26 · 운영 대시보드 기준</div></div>
+      <div class="result"><div class="result__value result__value--text">피드백에서 협업 기능으로</div><div class="result__note">베타 사용자의 HTML 문서 공동 작업 요구를 PoC로 구현하고 정식 기능으로 고도화</div></div>
     </div>
-    <p class="result-footnote">개발 이력: MR 103건 작성 / 101건 머지</p>
+    <p class="result-footnote">운영 모델: Google · Anthropic · Perplexity · OpenAI<br>개발 이력: MR 103건 작성 / 101건 머지</p>
   </section>
 
   <section class="wsec wsec--gap">
@@ -149,30 +150,29 @@
     <p class="note">이미지를 클릭하면 크게 볼 수 있습니다.</p>
     <div class="shot-grid">
       <figure>
-        <button class="zoom-trigger" type="button" data-lightbox data-cap="사용량 대시보드입니다. 월 2.56억 토큰과 회사별 분포를 이 화면에서 확인합니다." aria-label="이미지 크게 보기">
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="토큰 사용량과 모델 제공사별 사용 분포를 확인하는 운영 대시보드입니다." aria-label="이미지 크게 보기">
           <img class="shot" src="assets/inova_사용량 대시보드 전체 요약.png" alt="i-Nova 사용량 대시보드 전체 요약: 토큰 사용량과 회사별 분포" loading="lazy">
         </button>
-        <figcaption class="shot-caption">사용량 대시보드입니다. "월 2.56억 토큰"과 회사별 분포를 확인한 출처이며, 만들어 두기만 한 것이 아니라 운영 중인 서비스라는 근거이기도 합니다.</figcaption>
+        <figcaption class="shot-caption">토큰 사용량과 모델 제공사별 사용 분포를 확인하는 운영 대시보드입니다.</figcaption>
       </figure>
       <figure>
-        <button class="zoom-trigger" type="button" data-lightbox data-cap="아티팩트 화면입니다. 대화로 생성한 문서를 에디터에서 직접 편집하고, 버전 목록과 복원, Diff로 관리합니다." aria-label="이미지 크게 보기">
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="생성된 문서를 직접 편집하고, 버전별 변경 내용을 비교할 수 있는 아티팩트 화면입니다." aria-label="이미지 크게 보기">
           <img class="shot" src="assets/inova_아티팩트.png" alt="i-Nova 아티팩트 편집 화면: 문서 에디터와 버전 관리" loading="lazy">
         </button>
-        <figcaption class="shot-caption">아티팩트 화면입니다. 생성과 직접 편집, 버전 관리, Diff를 지원하며 SSE로 실시간 렌더링됩니다.</figcaption>
+        <figcaption class="shot-caption">생성된 문서를 직접 편집하고, 버전별 변경 내용을 비교할 수 있는 아티팩트 화면입니다.</figcaption>
       </figure>
       <figure>
-        <button class="zoom-trigger" type="button" data-lightbox data-cap="아티팩트 협업 화면입니다. 편집 잠금으로 한 번에 한 명만 수정하고, 오른쪽 버전 내역 패널에 편집 이력이 시간순으로 남습니다." aria-label="이미지 크게 보기">
+        <button class="zoom-trigger" type="button" data-lightbox data-cap="문서를 공유하고 접근 권한과 변경 이력을 관리하는 협업 화면입니다. 편집 잠금을 적용해 한 번에 한 명이 문서를 수정하도록 구성했습니다." aria-label="이미지 크게 보기">
           <img class="shot" src="assets/inova_아티팩트협업.png" alt="i-Nova 아티팩트 협업 화면: 공유 문서와 버전 내역 타임라인" loading="lazy">
         </button>
-        <figcaption class="shot-caption">아티팩트 협업 화면입니다. 초대와 권한, 변경 이력, 임시저장을 지원하며, 편집 잠금으로 한 번에 한 명만 문서를 수정합니다. 114파일 / 약 1만 줄 규모입니다.</figcaption>
+        <figcaption class="shot-caption">문서를 공유하고 접근 권한과 변경 이력을 관리하는 협업 화면입니다. 편집 잠금을 적용해 한 번에 한 명이 문서를 수정하도록 구성했습니다.</figcaption>
       </figure>
     </div>
   </section>
 
   <section class="wsec wsec--end">
-    <h2 class="wsec__title"><span class="wsec__num">7</span> 배운 점과 다음</h2>
-    <p class="prose">LLM 프로덕트 프론트엔드의 핵심은 "출력이 계약이 아니라 확률"이라는 전제를 받아들이는 것이었습니다. 형식의 한계를 인정하고 변환하지 않는 경로를 만드는 일과, 라이브러리가 왜 실패하는지를 브라우저 제약 수준까지 확인해 규명하는 일은 모두 이 전제에서 나온 태도입니다.</p>
-    <p class="prose">남은 과제도 분명합니다. 번들 −81%가 실제 로딩 시간에 준 개선폭의 측정, 그리고 아티팩트 협업의 실사용률 확인은 아직 확보하지 못한 숫자입니다.</p>
+    <h2 class="wsec__title"><span class="wsec__num">7</span> 배운 점</h2>
+    <p class="prose">작동하는 PoC는 관계자와 서비스의 가능성을 판단하는 기준이 됐고, 베타 사용자의 피드백은 다음에 필요한 기능을 구체화하는 계기가 됐습니다. 아티팩트 협업에서도 당시 일정과 구현 복잡도를 고려해 검증 가능한 범위를 정했습니다. 초기 구현 이후에도 실제 사용에서 드러나는 요구와 제약에 맞춰 서비스의 범위와 구현 방식을 조정하는 과정이 중요하다는 점을 배웠습니다.</p>
   </section>
 
   <div class="work-pager">
