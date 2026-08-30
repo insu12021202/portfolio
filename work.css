@@ -307,6 +307,8 @@
 
 .wtable th { text-align: left; }
 .wtable td:first-child { white-space: nowrap; }
+/* first column holds a sentence, not a label */
+.wtable--wrap td:first-child { white-space: normal; }
 
 /* ── Screenshot grids ──────────────────────────────────────────────────── */
 
