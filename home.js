@@ -24,30 +24,38 @@
 
     // Rebuild the h1 as word spans of char spans so each glyph can move on
     // its own. Text nodes split on whitespace; the <br> and the spaces stay
-    // as-is so line wrapping is unchanged.
-    Array.prototype.slice.call(title.childNodes).forEach(function (node) {
-      if (node.nodeType !== Node.TEXT_NODE) return;
-      var frag = document.createDocumentFragment();
-      node.textContent.split(/(\s+)/).forEach(function (part) {
-        if (!part) return;
-        if (/^\s+$/.test(part)) {
-          frag.appendChild(document.createTextNode(part));
+    // as-is so line wrapping is unchanged. Wrapper elements like the .hl
+    // highlight are kept and their text split in place.
+    var splitInto = function (parent) {
+      Array.prototype.slice.call(parent.childNodes).forEach(function (node) {
+        if (node.nodeType === Node.ELEMENT_NODE && node.tagName !== 'BR') {
+          splitInto(node);
           return;
         }
-        var word = document.createElement('span');
-        word.className = 'kinetic-word';
-        part.split('').forEach(function (ch) {
-          var span = document.createElement('span');
-          span.className = 'kinetic-char';
-          span.style.setProperty('--ci', String(chars.length));
-          span.textContent = ch;
-          word.appendChild(span);
-          chars.push(span);
+        if (node.nodeType !== Node.TEXT_NODE) return;
+        var frag = document.createDocumentFragment();
+        node.textContent.split(/(\s+)/).forEach(function (part) {
+          if (!part) return;
+          if (/^\s+$/.test(part)) {
+            frag.appendChild(document.createTextNode(part));
+            return;
+          }
+          var word = document.createElement('span');
+          word.className = 'kinetic-word';
+          part.split('').forEach(function (ch) {
+            var span = document.createElement('span');
+            span.className = 'kinetic-char';
+            span.style.setProperty('--ci', String(chars.length));
+            span.textContent = ch;
+            word.appendChild(span);
+            chars.push(span);
+          });
+          frag.appendChild(word);
         });
-        frag.appendChild(word);
+        parent.replaceChild(frag, node);
       });
-      title.replaceChild(frag, node);
-    });
+    };
+    splitInto(title);
 
     title.classList.add('is-split');
     // Double rAF: let the hidden state paint once before releasing it.
@@ -199,6 +207,22 @@
     Array.prototype.slice.call(document.querySelectorAll(COUNT_SELECTOR)).forEach(function (el) {
       observer.observe(el);
     });
+  }
+
+  /* ── Contact highlight sweep ──────────────────────────────────────────── */
+
+  var contactTitle = document.querySelector('.contact__title');
+
+  if (contactTitle && !reduceMotion.matches && 'IntersectionObserver' in window) {
+    contactTitle.classList.add('hl-armed');
+    var inkObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        contactTitle.classList.add('is-inked');
+        inkObserver.disconnect();
+      });
+    }, { threshold: 0.6 });
+    inkObserver.observe(contactTitle);
   }
 
   /* ── Magnetic hero buttons ────────────────────────────────────────────── */

@@ -542,7 +542,7 @@
 
 .contact {
   background: var(--color-accent);
-  color: #ffffff;
+  color: var(--color-on-accent);
 }
 
 .contact__inner { padding: clamp(56px, 8vw, 96px) 24px; }
@@ -554,7 +554,7 @@
   line-height: 1.2;
   letter-spacing: -0.02em;
   margin: 0 0 32px;
-  color: #ffffff;
+  color: var(--color-on-accent);
 }
 
 .contact__actions {
@@ -568,8 +568,8 @@
   align-items: center;
   min-height: 44px;
   padding: 10px 20px;
-  border: 2px solid #ffffff;
-  color: #ffffff;
+  border: 2px solid var(--color-on-accent);
+  color: var(--color-on-accent);
   text-decoration: none;
   font-family: var(--font-heading);
   font-weight: 800;
@@ -577,12 +577,12 @@
 }
 
 .contact__link:hover {
-  background: #ffffff;
+  background: var(--color-on-accent);
   color: var(--color-accent);
 }
 
 .contact__link:focus-visible {
-  outline: 2px solid #ffffff;
+  outline: 2px solid var(--color-on-accent);
   outline-offset: 3px;
 }
 
@@ -748,3 +748,42 @@
 @media (prefers-reduced-motion: reduce) {
   .work-item__media .zoom-trigger:hover { transform: none; }
 }
+
+/* ── Marker highlight ────────────────────────────────────────────────────
+   A band of accent tint behind the load-bearing words. The hero's paints
+   after the kinetic title lands; the contact one paints as it scrolls into
+   view. Without JS or with reduced motion the band is simply there. */
+.hl {
+  --hl-color: var(--color-accent-200);
+  background-image: linear-gradient(var(--hl-color), var(--hl-color));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 38%;
+}
+
+/* Deeper band on the accent ground, where the tint would vanish. */
+.contact__title .hl { --hl-color: var(--color-accent-700); }
+
+/* Hero: the sweep starts only once home.js has split the title (is-split),
+   and runs after the chars have risen. is-ready must follow is-split here
+   so the later rule wins. */
+.hero__title.is-split .hl {
+  background-size: 0% 38%;
+  transition: background-size 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.9s;
+}
+
+.hero__title.is-ready .hl { background-size: 100% 38%; }
+
+/* Contact: home.js arms the sweep (hl-armed) and fires it the first time
+   the title scrolls into view (is-inked), one band after another. A view()
+   timeline can't drive this — the highlights are inline boxes — so the
+   observer does. Without JS the bands are simply painted. */
+.contact__title.hl-armed .hl {
+  background-size: 0% 38%;
+  transition: background-size 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.contact__title.hl-armed .hl:nth-of-type(2) { transition-delay: 0.22s; }
+.contact__title.hl-armed .hl:nth-of-type(3) { transition-delay: 0.44s; }
+
+.contact__title.hl-armed.is-inked .hl { background-size: 100% 38%; }

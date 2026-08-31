@@ -100,6 +100,29 @@
     });
   }
 
+  /* ── Theme toggle ─────────────────────────────────────────────────────── */
+
+  // The inline <head> script already set data-theme before first paint;
+  // this button only flips it and remembers the choice.
+  var themeToggle = document.getElementById('theme-toggle');
+
+  function syncThemeToggle() {
+    if (!themeToggle) return;
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    themeToggle.setAttribute('aria-checked', String(dark));
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function () {
+      var next = document.documentElement.getAttribute('data-theme') === 'dark'
+        ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) { /* private mode */ }
+      syncThemeToggle();
+    });
+    syncThemeToggle();
+  }
+
   /* ── Lightbox ─────────────────────────────────────────────────────────── */
 
   var lightbox = document.getElementById('lightbox');

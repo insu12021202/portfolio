@@ -3,12 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>(function () { var t = null; try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t !== "dark" && t !== "light") { t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
+    document.documentElement.setAttribute("data-theme", t); })();</script>
   <title>여인수 · 프론트엔드 개발자 · AI 서비스와 업무 자동화</title>
   <meta name="description" content="사용자의 요청과 실제 업무 흐름을 함께 살펴 해결할 문제를 구체화하고, 핵심 기능이 동작하는 최소한의 제품으로 빠르게 확인한 뒤 팀과 함께 서비스로 발전시킵니다. 사내 LLM 챗봇 i-Nova, 캠페인 리포트 자동화.">
   <meta property="og:title" content="여인수 · 프론트엔드 개발자 · AI 서비스와 업무 자동화">
-  <meta property="og:description" content="사용자의 일을 이해하고, 빠른 검증을 실제 서비스로 이어갑니다.">
+  <meta property="og:description" content="기존 업무 흐름을 빠르게 읽어내고, 빠른 검증을 통해 실제 서비스로 만들어갑니다.">
   <meta property="og:type" content="website">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ec3013'/%3E%3Ctext x='7' y='24' font-family='Arial' font-weight='800' font-size='20' fill='white'%3EY%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230d6b45'/%3E%3Ctext x='7' y='24' font-family='Arial' font-weight='800' font-size='20' fill='white'%3EY%3C/text%3E%3C/svg%3E">
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="stylesheet" href="ds/styles.css">
@@ -28,6 +31,15 @@
       <a href="#capabilities">Capabilities</a>
       <a href="#contact">Contact</a>
     </div>
+    <button class="theme-toggle" id="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="다크 테마">
+      <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path d="M10 2a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 2ZM10 15a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 15ZM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM15.657 5.404a.75.75 0 1 0-1.06-1.06l-1.061 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM6.464 14.596a.75.75 0 1 0-1.06-1.06l-1.06 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM18 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 18 10ZM5 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 5 10ZM14.596 15.657a.75.75 0 0 0 1.06-1.06l-1.06-1.061a.75.75 0 1 0-1.06 1.06l1.06 1.06ZM5.404 6.464a.75.75 0 0 0 1.06-1.06l-1.06-1.06a.75.75 0 1 0-1.061 1.06l1.06 1.06Z"/>
+      </svg>
+      <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M7.455 2.004a.75.75 0 0 1 .26.77 7 7 0 0 0 9.958 7.967.75.75 0 0 1 1.067.853A8.5 8.5 0 1 1 6.647 1.921a.75.75 0 0 1 .808.083Z" clip-rule="evenodd"/>
+      </svg>
+      <span class="theme-toggle__thumb"></span>
+    </button>
     <button class="site-nav__toggle" id="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="site-menu">MENU</button>
   </nav>
   <div class="site-menu" id="site-menu" hidden>
@@ -42,7 +54,7 @@
 <main>
   <section class="hero shell" id="about">
     <p class="hero__eyebrow">프론트엔드 개발자 · AI 서비스와 업무 자동화</p>
-    <h1 class="hero__title">사용자의 일을 이해하고,<br>빠른 검증을 실제 서비스로 이어갑니다.</h1>
+    <h1 class="hero__title">기존 업무 흐름을 빠르게 읽어내고,<br><span class="hl">빠른 검증</span>을 통해 <span class="hl">실제 서비스</span>로 만들어갑니다.</h1>
 
     <div class="hero__body">
       <div class="hero__intro">
@@ -51,8 +63,16 @@
         <p class="hero__meta">여인수 · 인크로스 (SK네트웍스 자회사) · AI신성장본부 UX플랫폼개발팀 · 대리 · 2024~</p>
         <div class="hero__actions">
           <a class="btn btn-primary" href="#work">프로젝트 보기 →</a>
-          <a class="btn btn-secondary" href="https://github.com/insu12021202" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn btn-ghost" href="mailto:insu12021202@gmail.com">Email</a>
+          <a class="btn btn-secondary" href="https://github.com/insu12021202" target="_blank" rel="noopener">
+            <svg class="btn__icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+            </svg>
+            GitHub</a>
+          <a class="btn btn-ghost" href="mailto:insu12021202@gmail.com">
+            <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457Z"/>
+            </svg>
+            Email</a>
         </div>
       </div>
       <figure class="hero__portrait">
@@ -282,7 +302,7 @@
 
   <section class="contact" id="contact">
     <div class="contact__inner shell">
-      <h2 class="contact__title">빠르게 검증하고, 실제 사용에 맞춰 다듬으며<br>현업의 일을 더 편하게 만드는 서비스를 함께 만들고 싶습니다.</h2>
+      <h2 class="contact__title"><span class="hl">빠르게 검증</span>하고 실제 <span class="hl">환경에 맞춰 다듬으며</span>,<br>현업의 업무를 한결 편하게 돕는 서비스를 <span class="hl">함께 완성</span>하고 싶습니다.</h2>
       <div class="contact__actions">
         <a class="contact__link" href="mailto:insu12021202@gmail.com">insu12021202@gmail.com</a>
         <a class="contact__link" href="https://github.com/insu12021202" target="_blank" rel="noopener">github.com/insu12021202</a>

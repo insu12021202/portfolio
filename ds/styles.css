@@ -2,44 +2,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap');
 
 :root {
-  --color-bg: #f3f2f2;
-  --color-surface: #eae9e9;
-  --color-text: #201e1d;
-  --color-accent: #ec3013;
-  --color-accent-2: #e15b47;
-  --color-divider: color-mix(in srgb, #201e1d 40%, transparent);
+  color-scheme: light;
+
+  --color-bg: #f4f2ea;
+  --color-surface: #ebe8dc;
+  --color-text: #20211d;
+  --color-accent: #0d6b45;
+  --color-accent-2: #2f8a63;
+  --color-divider: color-mix(in srgb, #20211d 40%, transparent);
+
+  /* Ink the contact band's type runs in: white over the light accent, and
+     the page ground over the brighter dark-theme accent. */
+  --color-on-accent: #ffffff;
 
   /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
      same step of any role matches the others in visual value. */
-  --color-neutral-100: #f8f4f4;
-  --color-neutral-200: #eae7e7;
-  --color-neutral-300: #d7d3d3;
-  --color-neutral-400: #bab6b6;
-  --color-neutral-500: #9b9797;
-  --color-neutral-600: #7d7979;
-  --color-neutral-700: #605d5d;
-  --color-neutral-800: #444141;
-  --color-neutral-900: #2d2b2b;
+  --color-neutral-100: #f7f5ed;
+  --color-neutral-200: #e9e7de;
+  --color-neutral-300: #d6d4c9;
+  --color-neutral-400: #b9b7ab;
+  --color-neutral-500: #9a988d;
+  --color-neutral-600: #7c7a70;
+  --color-neutral-700: #605e56;
+  --color-neutral-800: #44433c;
+  --color-neutral-900: #2d2c27;
 
-  --color-accent-100: #fff2ef;
-  --color-accent-200: #ffe0d9;
-  --color-accent-300: #ffc4b8;
-  --color-accent-400: #ff9783;
-  --color-accent-500: #ff563c;
-  --color-accent-600: #dd2b0f;
-  --color-accent-700: #ae1800;
-  --color-accent-800: #7c1405;
-  --color-accent-900: #4d170e;
+  --color-accent-100: #ecf5f0;
+  --color-accent-200: #d6eae0;
+  --color-accent-300: #b4d8c6;
+  --color-accent-400: #79c0a0;
+  --color-accent-500: #2f8a63;
+  --color-accent-600: #0a5637;
+  --color-accent-700: #07422a;
+  --color-accent-800: #06331f;
+  --color-accent-900: #052517;
 
-  --color-accent-2-100: #fff2ef;
-  --color-accent-2-200: #ffe0da;
-  --color-accent-2-300: #ffc4b9;
-  --color-accent-2-400: #ff9784;
-  --color-accent-2-500: #ef6853;
-  --color-accent-2-600: #c94b39;
-  --color-accent-2-700: #9e3526;
-  --color-accent-2-800: #71261b;
-  --color-accent-2-900: #471d16;
+  --color-accent-2-100: #edf5f1;
+  --color-accent-2-200: #d9eae2;
+  --color-accent-2-300: #bad8c9;
+  --color-accent-2-400: #86c0a5;
+  --color-accent-2-500: #45936d;
+  --color-accent-2-600: #2a7050;
+  --color-accent-2-700: #1e553c;
+  --color-accent-2-800: #173f2d;
+  --color-accent-2-900: #112e21;
 
   --font-heading: "Archivo", system-ui, sans-serif;
   --font-heading-weight: 800;
@@ -58,9 +64,61 @@
 
   /* Elevation — derived from the ground: soft ink-tinted shadows on a
      light theme, a hairline edge + ambient darkness on a dark one. */
-  --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
-  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
-  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
+  --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2c27 14%, transparent);
+  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2c27 16%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2c27 22%, transparent);
+}
+
+/* ── Forest Night — the dark counterpart ─────────────────────────────────
+   Same green identity on a green-cast ink ground. The neutral ramp flips
+   so the same step keeps the same *role* (300 = borders, 600 = secondary
+   text); accent states brighten on hover instead of darkening. The page
+   opts in via data-theme="dark" on <html>, set before first paint. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg: #141713;
+  --color-surface: #1c201a;
+  --color-text: #eef0e9;
+  --color-accent: #4fc48f;
+  --color-accent-2: #79d3aa;
+  --color-divider: color-mix(in srgb, #eef0e9 36%, transparent);
+
+  --color-on-accent: #141713;
+
+  --color-neutral-100: #1d211c;
+  --color-neutral-200: #272b25;
+  --color-neutral-300: #363b34;
+  --color-neutral-400: #52584f;
+  --color-neutral-500: #7c8278;
+  --color-neutral-600: #a4a99f;
+  --color-neutral-700: #c3c7bd;
+  --color-neutral-800: #dcdfd6;
+  --color-neutral-900: #eef0e9;
+
+  --color-accent-100: #17251d;
+  --color-accent-200: #1c3126;
+  --color-accent-300: #234737;
+  --color-accent-400: #2f8a63;
+  --color-accent-500: #4fc48f;
+  --color-accent-600: #6fd2a4;
+  --color-accent-700: #93e0bd;
+  --color-accent-800: #bcecd6;
+  --color-accent-900: #ddf5ea;
+
+  --color-accent-2-100: #182620;
+  --color-accent-2-200: #1e332a;
+  --color-accent-2-300: #27493a;
+  --color-accent-2-400: #398f68;
+  --color-accent-2-500: #79d3aa;
+  --color-accent-2-600: #92dcba;
+  --color-accent-2-700: #aee6cb;
+  --color-accent-2-800: #c9eedd;
+  --color-accent-2-900: #e4f7ee;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 3px 10px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
 }
 
 body {
