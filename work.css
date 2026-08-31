@@ -365,7 +365,10 @@
 }
 
 .work-hero__text { min-width: 0; }
-.work-hero__media { min-width: 0; }
+
+/* The text column sets the row height; centering the media keeps a short
+   screenshot from hugging the top edge of the hero. */
+.work-hero__media { min-width: 0; align-self: center; }
 
 .work-hero .work-page__lead { margin-bottom: 14px; }
 .work-hero .work-page__lead:last-child { margin-bottom: 0; }
