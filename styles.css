@@ -651,3 +651,100 @@
 
   .timeline-row__year { flex: 1 1 100%; font-size: 18px; }
 }
+
+/* ── Motion (home only) ─────────────────────────────────────────────────
+   Three restrained layers: the kinetic hero title, scroll-driven reveals,
+   and hover micro-interactions. Everything here either sits behind
+   prefers-reduced-motion or is a plain hover affordance. */
+
+/* Kinetic title: home.js splits the h1 into word/char spans. Chars start
+   below their line box and rise with a per-char delay; the wght ripple is
+   driven inline by home.js and eased here. */
+.hero__title .kinetic-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.hero__title .kinetic-char {
+  display: inline-block;
+  transition:
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    font-variation-settings 0.3s ease;
+  transition-delay: calc(var(--ci, 0) * 26ms), 0s;
+}
+
+.hero__title.is-split .kinetic-char { transform: translateY(112%); }
+.hero__title.is-ready .kinetic-char { transform: translateY(0); }
+
+/* Scroll-driven reveals: pure CSS via the scroll-driven animations API.
+   Browsers without it (or readers who opt out of motion) get the static
+   page — the guard leaves markup and layout untouched. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .stat,
+    .work-item__row,
+    .capability,
+    .other-work__row {
+      animation: rise-in 1ms linear both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 45%;
+    }
+  }
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(26px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Magnetic CTAs: home.js sets the translate; the transition makes the
+   follow feel springy and returns the button on leave. */
+.hero__actions .btn.is-magnetic {
+  transition: transform 0.18s ease-out;
+  will-change: transform;
+}
+
+/* Nav underline slides in from the left and retreats to the right. */
+.site-nav__links a {
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.site-nav__links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.25s ease;
+}
+
+.site-nav__links a:hover::after,
+.site-nav__links a[aria-current="true"]::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Work-card screenshots lift toward the pointer instead of scaling, so
+   the image border stays crisp. */
+.work-item__media .zoom-trigger {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.work-item__media .zoom-trigger:hover { transform: translateY(-5px); }
+
+.work-item__media .shot { transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+
+.work-item__media .zoom-trigger:hover .shot {
+  border-color: var(--color-accent-400);
+  box-shadow: var(--shadow-md, 0 10px 28px rgba(32, 30, 29, 0.14));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-item__media .zoom-trigger:hover { transform: none; }
+}
