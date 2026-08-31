@@ -787,3 +787,44 @@
 .contact__title.hl-armed .hl:nth-of-type(3) { transition-delay: 0.44s; }
 
 .contact__title.hl-armed.is-inked .hl { background-size: 100% 38%; }
+
+/* ── Pineapple mark ──────────────────────────────────────────────────────
+   The house mascot: a green pineapple silhouette next to the brand name
+   and in the footer, matching the favicon. It wiggles when the brand link
+   is hovered. */
+.pineapple {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  color: var(--color-accent);
+}
+
+/* Green crown, golden body — a muted mustard on the cream paper, a touch
+   brighter against the dark ground so it keeps its glow. */
+.pineapple__body { fill: #e2a93c; }
+:root[data-theme="dark"] .pineapple__body { fill: #edc158; }
+
+.pineapple--sm { width: 14px; height: 14px; }
+
+.site-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.site-footer__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .site-nav__brand .pineapple { transform-origin: 50% 85%; }
+  .site-nav__brand:hover .pineapple { animation: pineapple-wiggle 0.55s ease-in-out; }
+}
+
+@keyframes pineapple-wiggle {
+  25% { transform: rotate(-9deg); }
+  60% { transform: rotate(8deg); }
+  85% { transform: rotate(-3deg); }
+}
